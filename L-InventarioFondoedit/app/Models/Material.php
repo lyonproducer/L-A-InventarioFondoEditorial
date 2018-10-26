@@ -13,18 +13,20 @@ class Material extends Model
     protected $table = 'materiales';
 
     protected $fillable=[
-        'id_rubros', 'codigo', 'nombre','descripcion', 'cantidad', 'precio'
+        'rubros_id', 'codigo', 'nombre','descripcion', 'cantidad', 'precio'
     ]; 
 
-    public function Rubro(){
-        return $this->hasOne(Rubro::class,'id_rubros');
+    public function rubro(){
+        return $this->hasOne(Rubro::class,'id');
     }
 
-    public function Entregas(){
+    /*
+    public function entregas(){
         return $this->hasMany(Entrega::class);
     }
 
-    public function Entradas(){
+    public function entradas(){
         return $this->hasMany(Entrada::class);
     }
+    */
 }

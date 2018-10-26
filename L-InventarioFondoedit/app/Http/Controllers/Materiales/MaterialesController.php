@@ -15,7 +15,12 @@ class MaterialesController extends Controller
      */
     public function index()
     {
-        $materiales=Material::All();
+        //$materiales=Material::find(2);
+        //$materiales=Material::All();
+        $materiales=Material::with('rubro:id,nombre')->get();
+
+        //dd($materiales->rubro->toArray());
+
         return response()->json($materiales);
     }
 
@@ -38,7 +43,7 @@ class MaterialesController extends Controller
     public function store(Request $request)
     {
         $material=Material::create($request->all());
-        return response()->json(['info'=> 'Material añadida correctamente','data'=>$material]);
+        return response()->json(['info'=> 'Material añadido correctamente','data'=>$material]);
     }
 
     /**

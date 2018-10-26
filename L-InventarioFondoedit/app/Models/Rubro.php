@@ -12,6 +12,12 @@ class Rubro extends Model
     ]; 
 
     public function Material(){
-        return $this->belongsTo(Material::class);
+        return $this->belongsTo(Material::class,'rubros_id');
     }
+
+    /*
+    public function Material(){
+        return $this->belongsTo(App\Material::class);
+    }
+    */
 }
