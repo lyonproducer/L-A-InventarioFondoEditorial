@@ -15,11 +15,10 @@ class MaterialesController extends Controller
      */
     public function index()
     {
-        //$materiales=Material::find(2);
+        //$materiales=Material::find(1);
         //$materiales=Material::All();
-        $materiales=Material::with('rubro:id,nombre')->get();
-
-        //dd($materiales->rubro->toArray());
+        //$materiales=Material::with('rubro:id,nombre')->get();
+        $materiales=Material::with('rubro')->get();
 
         return response()->json($materiales);
     }

@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Materiales;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Entrada;
+use App\Models\Material;
+use DB;
 
 class EntradasController extends Controller
 {
@@ -14,7 +17,11 @@ class EntradasController extends Controller
      */
     public function index()
     {
-        //
+        //$materiales=Material::with('rubro:id,nombre')->get();
+        //$entradas=Entrada::All();
+        $entradas=Entrada::with('material:id,nombre')->get();
+
+        return response()->json($entradas);
     }
 
     /**
@@ -35,7 +42,14 @@ class EntradasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $entrada=Entrada::create($request->all());
+
+        $material = Material::find($request->material_id);
+        $material->cantidad += $request->cantidad;
+        $material->save();
+
+        //dd($material->toArray());
+        return response()->json(['info'=> 'Entrada añadida correctamente','data'=>$entrada]);
     }
 
     /**

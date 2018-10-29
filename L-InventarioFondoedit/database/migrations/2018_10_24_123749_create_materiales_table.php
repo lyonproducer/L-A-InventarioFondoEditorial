@@ -22,11 +22,11 @@ class CreateMaterialesTable extends Migration
             $table->integer('cantidad');
             $table->integer('precio'); 
 
-            $table->integer('rubros_id')->unsigned();
+            $table->integer('rubro_id')->unsigned();
 
             $table->timestamps();
 
-            $table->foreign('rubros_id')->references('id')->on('rubros')
+            $table->foreign('rubro_id')->references('id')->on('rubros')
             ->onDelete('cascade')
             ->onUpdate('cascade');
         });

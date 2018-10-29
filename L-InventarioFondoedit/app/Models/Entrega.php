@@ -8,10 +8,10 @@ use App\Models\Material;
 class Entrega extends Model
 {
     protected $fillable=[
-        'persona', 'cantidad', 'unidad_diseño', 'proyecto','id_materiales'
+        'persona', 'cantidad', 'unidad_diseño', 'proyecto','materiales_id'
     ];
 
-    public function Entrega(){
-        return $this->belongsTo(Material::class,'id_materiales');
+    public function material(){
+        return $this->belongsTo(Material::class,'id');
     }
 }

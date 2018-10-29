@@ -3,9 +3,6 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Entrada;
-use App\Models\Entrega;
-use App\Models\Rubro;
 
 class Material extends Model
 {
@@ -13,14 +10,13 @@ class Material extends Model
     protected $table = 'materiales';
 
     protected $fillable=[
-        'rubros_id', 'codigo', 'nombre','descripcion', 'cantidad', 'precio'
+        'rubro_id', 'codigo', 'nombre','descripcion', 'cantidad', 'precio'
     ]; 
 
     public function rubro(){
-        return $this->hasOne(Rubro::class,'id');
+        return $this->belongsTo(Rubro::class);
     }
-
-    /*
+    
     public function entregas(){
         return $this->hasMany(Entrega::class);
     }
@@ -28,5 +24,5 @@ class Material extends Model
     public function entradas(){
         return $this->hasMany(Entrada::class);
     }
-    */
+    
 }

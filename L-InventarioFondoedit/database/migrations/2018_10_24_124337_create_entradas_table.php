@@ -18,11 +18,11 @@ class CreateEntradasTable extends Migration
 
             $table->integer('cantidad');
 
-            $table->integer('id_materiales');
+            $table->integer('material_id');
 
             $table->timestamps();
 
-            $table->foreign('id_materiales')->references('id')->on('materiales')
+            $table->foreign('material_id')->references('id')->on('materiales')
             ->onDelete('cascade')
             ->onUpdate('cascade');
 

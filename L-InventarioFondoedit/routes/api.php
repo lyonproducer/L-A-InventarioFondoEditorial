@@ -37,5 +37,7 @@ Route::group([
     //Route::post('rubros','Materiales\RubrosController@store');
     Route::resource('rubros',   'Materiales\RubrosController');
     Route::resource('materiales',   'Materiales\MaterialesController');
+    Route::resource('entradas',   'Materiales\EntradasController');
+    Route::resource('entregas',   'Materiales\EntregasController');
 
 });
