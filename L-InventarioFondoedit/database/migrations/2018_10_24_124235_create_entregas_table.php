@@ -14,6 +14,7 @@ class CreateEntregasTable extends Migration
     public function up()
     {
         Schema::create('entregas', function (Blueprint $table) {
+
             $table->increments('id');
 
             $table->string('persona');
@@ -21,14 +22,13 @@ class CreateEntregasTable extends Migration
             $table->string('unidad_diseño');
             $table->string('proyecto');
 
-            $table->integer('material_id');
+            $table->integer('material_id')->unsigned();
 
             $table->timestamps();
 
             $table->foreign('material_id')->references('id')->on('materiales')
             ->onDelete('cascade')
             ->onUpdate('cascade');
-
         });
     }
 

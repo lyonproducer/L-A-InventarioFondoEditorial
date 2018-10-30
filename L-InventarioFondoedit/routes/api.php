@@ -34,7 +34,6 @@ Route::group([
     Route::post('resetPassword','ChangePasswordController@process');
 
     //Rubros
-    //Route::post('rubros','Materiales\RubrosController@store');
     Route::resource('rubros',   'Materiales\RubrosController');
     Route::resource('materiales',   'Materiales\MaterialesController');
     Route::resource('entradas',   'Materiales\EntradasController');

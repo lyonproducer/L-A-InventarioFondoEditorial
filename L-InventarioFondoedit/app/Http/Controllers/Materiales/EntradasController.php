@@ -20,7 +20,6 @@ class EntradasController extends Controller
         //$materiales=Material::with('rubro:id,nombre')->get();
         //$entradas=Entrada::All();
         $entradas=Entrada::with('material:id,nombre')->get();
-
         return response()->json($entradas);
     }
 

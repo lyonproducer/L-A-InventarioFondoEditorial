@@ -8,7 +8,7 @@ use App\Models\Material;
 class Entrega extends Model
 {
     protected $fillable=[
-        'persona', 'cantidad', 'unidad_diseño', 'proyecto','materiales_id'
+        'persona', 'cantidad', 'unidad_diseño', 'proyecto','material_id'
     ];
 
     public function material(){

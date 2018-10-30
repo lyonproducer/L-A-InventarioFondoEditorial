@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Materiales;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Entrega;
+use App\Models\Material;
 
 class EntregasController extends Controller
 {
@@ -14,7 +16,8 @@ class EntregasController extends Controller
      */
     public function index()
     {
-        //
+        $entregas=Entrega::with('material:id,nombre')->get();
+        return response()->json($entregas);
     }
 
     /**
@@ -35,7 +38,17 @@ class EntregasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $material = Material::find($request->material_id);
+    
+        if($request->cantidad > $material->cantidad){
+            return response()->json(['info'=> 'Excede la cantidad disponible']);
+        }else
+
+        $material->cantidad -= $request->cantidad;
+        $material->save();
+        $entrega=Entrega::create($request->all());
+        
+        return response()->json(['info'=> 'Entrega registrada correctamente','data'=>$entrega]);
     }
 
     /**

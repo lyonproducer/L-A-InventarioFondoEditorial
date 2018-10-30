@@ -18,7 +18,7 @@ class CreateEntradasTable extends Migration
 
             $table->integer('cantidad');
 
-            $table->integer('material_id');
+            $table->integer('material_id')->unsigned();;
 
             $table->timestamps();
 

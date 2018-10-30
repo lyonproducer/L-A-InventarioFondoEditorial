@@ -1,0 +1,83 @@
+<div class="container mt-5">
+
+  <tabset>
+
+    <tab heading="Materiales" id="tab1">
+
+      <div class="card">
+
+        <div class="card-header">
+          <div class="row">
+            <div class="col-2">
+              <p class="ml-3 m-0">Nombre</p>
+            </div>
+
+            <div class="col-2">
+              <p class="m-0">Cantidad</p>
+            </div>
+
+            <div class="col-2">
+              <p class="m-0">Precio</p>
+            </div>
+
+            <div class="col">
+              <button class="btn btn-info float-right">Añadir</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-body">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item" *ngFor="let material of materialesService.materiales">
+              <div class="row">
+                <div class="col-2">
+                  <p>{{material.nombre}}</p>
+                </div>
+    
+                <div class="col-2">
+                  <p class="m-0">{{material.cantidad}}</p>
+                </div>
+    
+                <div class="col-2">
+                    <p class="m-0">{{material.precio}} Bs.S</p>
+                </div>
+
+                <div class="col">
+                  <a class="float-right ml-4 text-danger" (click)="onDelete(material.id)" 
+                  style="cursor:pointer;">
+                    <i class="far fa-trash-alt"></i>
+                  </a>
+              
+                  <a class="float-right ml-4 text-secondary" routerLink="/categorias/create" 
+                  (click)="onEdit(material)" >
+                    <i class="far fa-edit"></i>
+                  </a>
+              
+                  <a class="float-right ml-4 text-secondary" routerLink="/categorias/view"
+                  (click)="onView(material)" >
+                    <i class="fa fa-eye" aria-hidden="true"></i>
+                  </a>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="card-footer text-center">
+          2 days ago
+        </div>
+
+      </div>
+    </tab>
+
+    <tab heading="Entradas">
+      Basic content 1
+    </tab>
+
+    <tab heading="Entregas">
+      Basic content 2
+    </tab>
+
+  </tabset>
+
+</div>

@@ -1,9 +1,14 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark" style="background: #0a3677">
   <div class="container">
 
-    <a class="navbar-brand" href="#">Login Angular/Laravel</a>
+    <a class="navbar-brand" href="#">Inventario Fondo Editorial UNEG</a>
 
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+
+      <div class="navbar-nav">
+        <a class="nav-item nav-link" routerLink="materialesModule" *ngIf="loggedIn">Materiales</a>
+        <a class="nav-item nav-link" routerLink="">Publicaciones</a>
+      </div>
 
       <ul class="navbar-nav ml-auto">
 
