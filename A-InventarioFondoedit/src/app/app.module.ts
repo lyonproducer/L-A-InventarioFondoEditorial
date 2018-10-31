@@ -8,6 +8,7 @@ import { TabsModule } from 'ngx-bootstrap';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -70,7 +71,8 @@ const routes: Route[] = [
     TabsModule.forRoot(),
     BrowserAnimationsModule,
     MatDialogModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    NgxPaginationModule
   ],
   providers: [
     { provide: 'SnotifyToastConfig', useValue: ToastDefaults},

@@ -30,7 +30,8 @@
         <div class="card-body" >
 
           <ul class="list-group list-group-flush">
-            <li class="list-group-item" *ngFor="let material of materialesService.materiales">
+            <li class="list-group-item" *ngFor="let material of materialesService.materiales 
+            | paginate: { itemsPerPage: 5, currentPage: p, id: 'first'}">
               <div class="row">
                 <div class="col-2">
                   <p>{{material.nombre}}</p>
@@ -66,7 +67,9 @@
         </div>
 
         <div class="card-footer text-center">
-          2 days ago
+          <pagination-controls (pageChange)="p = $event" id="first"
+          previousLabel="Anterior"
+          nextLabel="Siguiente"></pagination-controls>
         </div>
 
       </div>
@@ -101,7 +104,9 @@
         <div class="card-body">
 
           <ul class="list-group list-group-flush">
-            <li class="list-group-item" *ngFor="let entrada of this.entradasService.entradas">
+            <li class="list-group-item" 
+            *ngFor="let entrada of this.entradasService.entradas | 
+            paginate: { id:'second', itemsPerPage: 5, currentPage: p2 }">
               <div class="row">
                 <div class="col-2">
                   <p>{{entrada.material.nombre}}</p>
@@ -129,7 +134,9 @@
         </div>
 
         <div class="card-footer text-center">
-          2 days ago
+          <pagination-controls id="second" (pageChange)="p2 = $event"
+          previousLabel="Anterior"
+          nextLabel="Siguiente"></pagination-controls>
         </div>
         
       </div>
