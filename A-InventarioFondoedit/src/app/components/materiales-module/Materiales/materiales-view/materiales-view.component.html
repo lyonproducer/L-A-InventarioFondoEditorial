@@ -1,3 +1,35 @@
-<p>
-  materiales-view works!
-</p>
+<h2 mat-dialog-title class="text-center">{{data.nombre}}</h2>
+
+<hr class="mt-2 mb-0">
+
+<mat-dialog-content>
+
+  <div class="row mt-4">
+
+    <div class="col">
+      <strong>Codigo: </strong>
+      <p>{{data.codigo}}</p>
+    </div>
+
+    <div class="col">
+      <strong>Rubro: </strong>
+      <p>{{data.rubro.nombre}}</p>
+    </div>
+
+    <div class="col">
+      <strong>Cantidad:</strong>
+      <p>{{data.cantidad}}</p>
+    </div>
+
+  </div>
+
+  <div class="row">
+
+    <div class="col">
+      <strong>Descripción: </strong>
+      <p>{{data.descripcion}}</p>
+    </div>
+    
+  </div>
+
+</mat-dialog-content>

@@ -21,12 +21,14 @@
             </div>
 
             <div class="col">
-              <button class="btn btn-info float-right">Añadir</button>
+              <button class="btn btn-info float-right" 
+              (click)="openAddMaterialDialog()">Añadir</button>
             </div>
           </div>
         </div>
 
-        <div class="card-body">
+        <div class="card-body" >
+
           <ul class="list-group list-group-flush">
             <li class="list-group-item" *ngFor="let material of materialesService.materiales">
               <div class="row">
@@ -43,18 +45,18 @@
                 </div>
 
                 <div class="col">
-                  <a class="float-right ml-4 text-danger" (click)="onDelete(material.id)" 
+                  <a class="float-right ml-4 text-danger" (click)="deleteMaterial(material.id)" 
                   style="cursor:pointer;">
                     <i class="far fa-trash-alt"></i>
                   </a>
               
-                  <a class="float-right ml-4 text-secondary" routerLink="/categorias/create" 
-                  (click)="onEdit(material)" >
+                  <a class="float-right ml-4 text-secondary" (click)="onEdit(material)"
+                  style="cursor:pointer;" >
                     <i class="far fa-edit"></i>
                   </a>
               
-                  <a class="float-right ml-4 text-secondary" routerLink="/categorias/view"
-                  (click)="onView(material)" >
+                  <a class="float-right ml-4 text-secondary" (click)="onViewMaterial(material)"
+                  style="cursor:pointer;">
                     <i class="fa fa-eye" aria-hidden="true"></i>
                   </a>
                 </div>
@@ -71,11 +73,75 @@
     </tab>
 
     <tab heading="Entradas">
-      Basic content 1
+      <div class="card">
+
+        
+        <div class="card-header">
+          <div class="row">
+            <div class="col-2">
+              <p class="ml-3 m-0">Nombre</p>
+            </div>
+
+            <div class="col-2">
+              <p class="m-0">Cantidad</p>
+            </div>
+
+            <div class="col-2">
+              <p class="m-0">Fecha</p>
+            </div>
+
+            <div class="col">
+              <button class="btn btn-info float-right" 
+              (click)="openAddEntradaDialog()">Añadir</button>
+            </div>
+          </div>
+        </div>
+
+        
+        <div class="card-body">
+
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item" *ngFor="let entrada of this.entradasService.entradas">
+              <div class="row">
+                <div class="col-2">
+                  <p>{{entrada.material.nombre}}</p>
+                </div>
+    
+                <div class="col-2">
+                  <p class="m-0">{{entrada.cantidad}}</p>
+                </div>
+    
+                <div class="col-2">
+                    <p class="m-0">{{entrada.created_at}}</p>
+                </div>
+
+                <div class="col">
+                  <a class="float-right ml-4 text-secondary" (click)="onViewMaterial(material)"
+                  style="cursor:pointer;">
+                    <i class="fa fa-eye" aria-hidden="true"></i>
+                  </a>
+                </div>
+              </div>
+            </li>
+            
+          </ul>
+          
+        </div>
+
+        <div class="card-footer text-center">
+          2 days ago
+        </div>
+        
+      </div>
+
+
     </tab>
 
     <tab heading="Entregas">
       Basic content 2
+
+
+
     </tab>
 
   </tabset>

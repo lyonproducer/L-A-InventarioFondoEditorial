@@ -41,6 +41,7 @@ class EntradasController extends Controller
      */
     public function store(Request $request)
     {
+        
         $entrada=Entrada::create($request->all());
 
         $material = Material::find($request->material_id);

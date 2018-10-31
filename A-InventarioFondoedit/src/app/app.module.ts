@@ -5,6 +5,9 @@ import { FormsModule } from '@angular/forms';
 
 import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
 import { TabsModule } from 'ngx-bootstrap';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -16,11 +19,14 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BeforeLoginService } from './services/auth/before-login.service';
 import { AfterLoginService } from './services/auth/after-login.service';
-import { MaterialesListComponent } from './components/materiales-module/Materiales/materiales-list/materiales-list.component';
+
 import { MaterialesViewComponent } from './components/materiales-module/Materiales/materiales-view/materiales-view.component';
 import { MaterialesFormComponent } from './components/materiales-module/Materiales/materiales-form/materiales-form.component';
 import { MaterialesModuleComponent } from './components/materiales-module/materiales-module.component';
 import { VariablesComponent } from './components/global/variables/variables.component';
+import { EntradasFormComponent } from './components/materiales-module/Entradas/entradas-form/entradas-form.component';
+import { EntregasFormComponent } from './components/materiales-module/Entregas/entregas-form/entregas-form.component';
+import { EntregasViewComponent } from './components/materiales-module/Entregas/entregas-view/entregas-view.component';
 
 const routes: Route[] = [
   
@@ -33,6 +39,12 @@ const routes: Route[] = [
 ];
 
 @NgModule({
+  entryComponents:[
+    MaterialesViewComponent,
+    MaterialesFormComponent,
+    EntradasFormComponent,
+    EntregasFormComponent
+  ],
   declarations: [
     AppComponent,
     NavbarComponent,
@@ -41,10 +53,12 @@ const routes: Route[] = [
     RequestResetComponent,
     ResponseResetComponent,
     ProfileComponent,
-    MaterialesListComponent,
     MaterialesViewComponent,
     MaterialesFormComponent,
     MaterialesModuleComponent,
+    EntradasFormComponent,
+    EntregasFormComponent,
+    EntregasViewComponent,
     
   ],
   imports: [
@@ -54,6 +68,9 @@ const routes: Route[] = [
     HttpClientModule,
     SnotifyModule,
     TabsModule.forRoot(),
+    BrowserAnimationsModule,
+    MatDialogModule,
+    MatProgressBarModule
   ],
   providers: [
     { provide: 'SnotifyToastConfig', useValue: ToastDefaults},

@@ -64,7 +64,7 @@ class MaterialesController extends Controller
      */
     public function edit($id)
     {
-        //
+
     }
 
     /**
@@ -87,6 +87,8 @@ class MaterialesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $material = Material::find($id);
+        $material->delete();
+        return response()->json(['info'=> 'Material eliminado correctamente']);
     }
 }

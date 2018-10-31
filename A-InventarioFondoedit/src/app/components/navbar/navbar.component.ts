@@ -3,7 +3,6 @@ import { RouterModule, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { TokenService } from 'src/app/services/auth/token.service';
 
-
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',

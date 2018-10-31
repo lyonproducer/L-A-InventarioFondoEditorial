@@ -17,4 +17,12 @@ export class MaterialesService {
     return this.http.get(this.variables.baseApi + '/materiales');
   }
 
+  deleteMaterial(id : number){
+    return this.http.delete(this.variables.baseApi + '/materiales/'+ id);
+  }
+
+  postMaterial(data:Material){
+    return this.http.post(this.variables.baseApi + '/materiales',data);
+  }
+
 }

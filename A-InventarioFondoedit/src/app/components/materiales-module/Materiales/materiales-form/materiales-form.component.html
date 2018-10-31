@@ -1,3 +1,74 @@
-<p>
-  materiales-form works!
-</p>
+<h2 mat-dialog-title class="text-center">Nuevo material</h2>
+
+<hr class="mt-2 mb-0">
+
+<mat-dialog-content *ngIf="!loading">
+
+  <form #materialForm="ngForm" (ngSubmit)="onSubmit(materialForm)">
+
+    <input *ngIf="data.editar" type="hidden" name="id" #id="ngModel" [(ngModel)]="material.id">
+    <input required type="number" name="rubro_id" #id="ngModel" [(ngModel)]="material.rubro_id">
+
+    <div class="form-group">
+      <label for="nombre">Nombre</label>
+      <input required [(ngModel)]="material.nombre" type="text" name="nombre" #name="ngModel" id="nombre" placeholder="Inserte el nombre" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="descripcion">Descripción</label>
+      <textarea [(ngModel)]="material.descripcion" type="text" name="descripcion" id="descripcion" class="form-control" placeholder="Ingresa la descripción"></textarea>
+    </div>
+
+    <div class="row">
+
+      <div class="col">
+        <div class="form-group">
+          <label for="codigo">Codigo</label>
+          <input required [(ngModel)]="material.codigo" type="text" name="codigo" #name="ngModel" id="codigo" placeholder="Inserte el codigo" class="form-control">
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="form-group">
+          <label for="precio">Precio (Bs.S)</label>
+          <input required [(ngModel)]="material.precio" type="number" name="precio" #name="ngModel" id="precio" placeholder="Inserte el precio" class="form-control">
+        </div>
+      </div>
+
+    </div>
+
+    <div class="form-group">
+      <div class="form-group">
+
+        <label for="exampleFormControlSelect1">Selecciona el rubro</label>
+
+        <select class="form-control"  id="exampleFormControlSelect1" 
+        (change)="asignRubroID($event.target.value)" 
+        *ngIf="data.editar" [value]="material.rubro.nombre">
+          <option *ngFor="let rubro of rubrosService.rubros">
+            {{rubro.nombre}}
+          </option>
+        </select>
+
+        <select class="form-control"  id="exampleFormControlSelect1" 
+        (change)="asignRubroID($event.target.value)" 
+        *ngIf="!data.editar">
+          <option value="null" selected>Seleccionar</option>
+          <option *ngFor="let rubro of rubrosService.rubros">
+            {{rubro.nombre}}
+          </option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group text-center">
+      <button type="submit" class="btn btn-primary" style="padding:8px 100px;margin-top:25px;" [disabled]="!materialForm.valid">
+        Guardar Complemento
+      </button>
+    </div>
+
+  </form>
+
+</mat-dialog-content>
+
+<mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
