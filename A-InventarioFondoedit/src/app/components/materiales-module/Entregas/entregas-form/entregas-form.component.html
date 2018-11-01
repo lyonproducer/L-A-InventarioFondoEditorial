@@ -1,4 +1,5 @@
-<h2 mat-dialog-title class="text-center">Nuevo entrega</h2>
+<h2 mat-dialog-title class="text-center" *ngIf="!loading">Nueva entrega</h2>
+<h2 mat-dialog-title class="text-center" *ngIf="loading">Añadiendo entrega</h2>
 
 <hr class="mt-2 mb-0">
 
@@ -47,14 +48,14 @@
       <div class="col">
         <div class="form-group">
           <label for="persona">Persona a Asignar</label>
-          <input required [(ngModel)]="entrega.persona" type="text" name="persona" #name="ngModel" id="persona" placeholder="Inserte el nombre" class="form-control">
+          <input required [(ngModel)]="entrega.persona" type="text" name="persona" #name="ngModel" id="persona" placeholder="Nombre de la persona a asignar" class="form-control">
         </div>
       </div>
 
       <div class="col">
         <div class="form-group">
           <label for="proyecto">Proyecto</label>
-          <input required [(ngModel)]="entrega.proyecto" type="text" name="proyecto" #name="ngModel" id="proyecto" placeholder="Inserte la proyecto" class="form-control">
+          <input required [(ngModel)]="entrega.proyecto" type="text" name="proyecto" #name="ngModel" id="proyecto" placeholder="Nombre del proyecto" class="form-control">
         </div>
       </div>
 
