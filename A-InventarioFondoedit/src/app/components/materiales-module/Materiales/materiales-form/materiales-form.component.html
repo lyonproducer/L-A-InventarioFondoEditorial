@@ -7,7 +7,7 @@
   <form #materialForm="ngForm" (ngSubmit)="onSubmit(materialForm)">
 
     <input *ngIf="data.editar" type="hidden" name="id" #id="ngModel" [(ngModel)]="material.id">
-    <input required type="number" name="rubro_id" #id="ngModel" [(ngModel)]="material.rubro_id">
+    <input required type="hidden" name="rubro_id" #id="ngModel" [(ngModel)]="material.rubro_id">
 
     <div class="form-group">
       <label for="nombre">Nombre</label>
@@ -45,6 +45,7 @@
         <select class="form-control"  id="exampleFormControlSelect1" 
         (change)="asignRubroID($event.target.value)" 
         *ngIf="data.editar" [value]="material.rubro.nombre">
+          <option selected="true" disabled="disabled">Seleccionar</option>
           <option *ngFor="let rubro of rubrosService.rubros">
             {{rubro.nombre}}
           </option>

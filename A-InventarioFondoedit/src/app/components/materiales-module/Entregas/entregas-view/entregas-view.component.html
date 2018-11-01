@@ -1,3 +1,40 @@
-<p>
-  entregas-view works!
-</p>
+<h2 mat-dialog-title class="text-center">Entrega</h2>
+
+<hr class="mt-2 mb-0">
+
+<mat-dialog-content>
+
+  <div class="row mt-4">
+
+    <div class="col">
+      <strong>Nombre: </strong>
+      <p>{{data.material.nombre}}</p>
+    </div>
+
+    <div class="col">
+      <strong>Cantidad: </strong>
+      <p>{{data.cantidad}}</p>
+    </div>
+
+    <div class="col">
+      <strong>Proyecto:</strong>
+      <p>{{data.proyecto}}</p>
+    </div>
+
+  </div>
+
+  <div class="row">
+
+    <div class="col">
+      <strong>Fecha: </strong>
+      <p>{{data.created_at}}</p>
+    </div>
+
+    <div class="col">
+      <strong>Unidad de diseño:</strong>
+      <p>{{unidad_diseno}}</p>
+    </div>
+    
+  </div>
+
+</mat-dialog-content>

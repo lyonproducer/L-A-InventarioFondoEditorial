@@ -1,3 +1,80 @@
-<p>
-  entregas-form works!
-</p>
+<h2 mat-dialog-title class="text-center">Nuevo entrega</h2>
+
+<hr class="mt-2 mb-0">
+
+<mat-dialog-content *ngIf="!loading">
+
+  <form #entregaForm="ngForm" (ngSubmit)="onSubmit(entregaForm)">
+
+    <input required type="hidden" name="material_id" #id="ngModel" [(ngModel)]="entrega.material_id">
+
+    <div class="row">
+
+      <div class="col">
+        <div class="form-group">
+          <div class="form-group">
+    
+            <label for="exampleFormControlSelect1">Selecciona el material</label>
+            <select class="form-control"  id="exampleFormControlSelect1" 
+            (change)="asignEntregaID($event.target.value)">
+              <option selected="true" disabled="disabled">Seleccionar</option>
+              <option *ngFor="let material of materialesService.materiales">
+                {{material.nombre}}
+              </option>
+            </select>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="form-group">
+          <label for="cantidad">Cantidad</label>
+          <input required [(ngModel)]="entrega.cantidad" type="number" name="cantidad" 
+          [disabled]="maxCantidad==0" #name="ngModel" id="cantidad" placeholder="Inserte la cantidad" class="form-control" min="1" max="{{maxCantidad}}">
+          <small class="text-danger" *ngIf="entrega.cantidad>maxCantidad">
+            Supera a la cantidad disponible
+          </small>
+          <small class="text-danger" *ngIf="entrega.cantidad<0">
+            Numero invalido
+          </small>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+          <label for="persona">Persona a Asignar</label>
+          <input required [(ngModel)]="entrega.persona" type="text" name="persona" #name="ngModel" id="persona" placeholder="Inserte el nombre" class="form-control">
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="form-group">
+          <label for="proyecto">Proyecto</label>
+          <input required [(ngModel)]="entrega.proyecto" type="text" name="proyecto" #name="ngModel" id="proyecto" placeholder="Inserte la proyecto" class="form-control">
+        </div>
+      </div>
+
+    </div>
+
+    <div class="col p-0">
+      <div class="form-group">
+        <label for="unidad_diseno">Unidad de diseño</label>
+        <input required [(ngModel)]="unidad_diseno" type="text" name="unidad_diseño" #name="ngModel" id="unidad_diseno" placeholder="Inserte la unidad de diseño" class="form-control">
+      </div>
+    </div>
+
+    <div class="form-group text-center">
+      <button type="submit" class="btn btn-primary" style="padding:8px 100px;margin-top:25px;" [disabled]="!entregaForm.valid">
+        Guardar Complemento
+      </button>
+    </div>
+
+  </form>
+
+</mat-dialog-content>
+
+<mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>

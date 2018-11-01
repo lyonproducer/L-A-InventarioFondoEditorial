@@ -8,6 +8,9 @@ import { EntradasService } from 'src/app/services/admin/entradas.service';
 import { EntregasService } from 'src/app/services/admin/entregas.service';
 import { Entrada } from 'src/app/Models/Entrada';
 import { EntradasFormComponent } from './Entradas/entradas-form/entradas-form.component';
+import { Entrega } from 'src/app/Models/Entrega';
+import { EntregasFormComponent } from './Entregas/entregas-form/entregas-form.component';
+import { EntregasViewComponent } from './Entregas/entregas-view/entregas-view.component';
 
 @Component({
   selector: 'app-materiales-module',
@@ -28,7 +31,7 @@ export class MaterialesModuleComponent implements OnInit {
   ngOnInit() {
     this.updateMaterialesList();
     this.updateEntradasList();
-    console.log(this.entradasService.entradas);
+    this.updateEntregasList();
   }
 
   //  //////////////////////////////////////////////////////
@@ -81,7 +84,7 @@ export class MaterialesModuleComponent implements OnInit {
       res=>{
 
         this.entradasService.entradas = res as Entrada[];
-        console.log("dentro response",this.entradasService.entradas);
+        console.log("dentro response entradas",this.entradasService.entradas);
       }
     );
   }
@@ -92,4 +95,32 @@ export class MaterialesModuleComponent implements OnInit {
     });
   }
 
+  ////////////////////////////////////////////////////////
+  //Salidas FUNCIONES
+  ///////////////////////////////////////////////////////
+  updateEntregasList(){
+    this.entregasService.getEntregas().subscribe(
+      res=>{
+        this.entregasService.entregas = res as Entrega[];
+        console.log("dentro response entregas",this.entregasService.entregas);
+      }
+    );
+  }
+
+  openAddEntregaDialog(){
+    const dialogRef = this.dialog.open(EntregasFormComponent, {
+      width: '45%'
+    });
+  }
+
+  onViewEntrega(entrega){
+    const dialogRef = this.dialog.open(EntregasViewComponent, {
+      width: '45%',
+      data: entrega
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The Material dialog was closed');
+    });
+  }
 }

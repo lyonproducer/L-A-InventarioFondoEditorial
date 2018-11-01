@@ -1,18 +1,18 @@
-<h2 mat-dialog-title class="text-center">Nuevo material</h2>
+<h2 mat-dialog-title class="text-center">Nuevo entrada</h2>
 
 <hr class="mt-2 mb-0">
 
 <mat-dialog-content *ngIf="!loading">
 
-  <form #materialForm="ngForm" (ngSubmit)="onSubmit()">
+  <form #entradaForm="ngForm" (ngSubmit)="onSubmit()">
 
-    <input required type="number" name="rubro_id" #id="ngModel" [(ngModel)]="entrada.material_id">
+    <input required type="hidden" name="rubro_id" #id="ngModel" [(ngModel)]="entrada.material_id">
 
     <div class="row">
       <div class="col">
         <div class="form-group">
           <label for="cantidad">Cantidad</label>
-          <input required [(ngModel)]="entrada.cantidad" type="number" name="cantidad" #name="ngModel" id="cantidad" placeholder="Inserte la cantidad" class="form-control">
+          <input required [(ngModel)]="entrada.cantidad" type="number" name="cantidad" min="1" #name="ngModel" id="cantidad" placeholder="Inserte la cantidad" class="form-control">
         </div>
       </div>
 
@@ -23,7 +23,7 @@
             <label for="exampleFormControlSelect1">Selecciona el entrada</label>
             <select class="form-control"  id="exampleFormControlSelect1" 
             (change)="asignEntradaID($event.target.value)">
-              <option value="null" selected>Seleccionar</option>
+              <option selected="true" disabled="disabled">Seleccionar</option>
               <option *ngFor="let material of materialesService.materiales">
                 {{material.nombre}}
               </option>
@@ -38,7 +38,7 @@
 
 
     <div class="form-group text-center">
-      <button type="submit" class="btn btn-primary" style="padding:8px 100px;margin-top:25px;" [disabled]="!materialForm.valid">
+      <button type="submit" class="btn btn-primary" style="padding:8px 100px;margin-top:25px;" [disabled]="!entradaForm.valid">
         Guardar Complemento
       </button>
     </div>

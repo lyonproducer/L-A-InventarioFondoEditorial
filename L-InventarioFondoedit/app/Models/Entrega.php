@@ -12,6 +12,6 @@ class Entrega extends Model
     ];
 
     public function material(){
-        return $this->belongsTo(Material::class,'id');
+        return $this->belongsTo(Material::class);
     }
 }

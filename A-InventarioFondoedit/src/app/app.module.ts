@@ -44,7 +44,8 @@ const routes: Route[] = [
     MaterialesViewComponent,
     MaterialesFormComponent,
     EntradasFormComponent,
-    EntregasFormComponent
+    EntregasFormComponent,
+    EntregasViewComponent
   ],
   declarations: [
     AppComponent,

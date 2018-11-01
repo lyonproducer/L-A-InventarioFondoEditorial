@@ -15,5 +15,9 @@ export class EntregasService {
   getEntregas(){
     return this.http.get(this.variables.baseApi + '/entregas');
   }
+
+  postEntrega(data:Entrega){
+    return this.http.post(this.variables.baseApi + '/entregas',data);
+  }
   
 }
