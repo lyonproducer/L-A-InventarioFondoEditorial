@@ -13,11 +13,13 @@ class CreatePublicacionesHasSalidasTable extends Migration
      */
     public function up()
     {
-        Schema::create('publicaciones_has_salidas', function (Blueprint $table) {
+        Schema::create('publicacion_salida', function (Blueprint $table) {
             $table->increments('id');
 
             $table->integer('publicacion_id')->unsigned();
             $table->integer('salida_id')->unsigned();
+
+            $table->integer('cantidad');
 
             $table->timestamps();
 

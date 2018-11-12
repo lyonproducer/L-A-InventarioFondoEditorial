@@ -18,7 +18,7 @@ class CreateSalidasTable extends Migration
 
             $table->string('sede')->nullable();
             $table->string('cliente')->nullable();
-            $table->integer('cantidad');
+            //$table->integer('cantidad');
             $table->string('tipo');
 
             $table->timestamps();

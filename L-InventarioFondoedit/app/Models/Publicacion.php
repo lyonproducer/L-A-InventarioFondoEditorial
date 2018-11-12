@@ -10,21 +10,26 @@ class Publicacion extends Model
 
     protected $fillable=[
         
-        'codigo',
-        'isbn',
         'tema', 
         'titulo', 
-        'fecha_publicacion',
+        'fecha_elaboracion',
         'descripcion', 
         'departamento',
         'origen',
         'tipo_publicacion',
         'categoria',
-        'precio',
         'cantidad_impresa',
         'cantidad_cd',
         'url_digital',
-        'autor'
+        'isbn',
+        'costo_unitario',
+        'codigo',
+        'volumen',
+        'periodo',
+        'numero_edicion',
+        'autor',
+        'precio_unitario'
+        
     ];
     
     public function stocks(){

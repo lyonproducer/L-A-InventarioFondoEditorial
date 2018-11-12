@@ -12,7 +12,7 @@ class Salida extends Model
         
         'sede',
         'cliente',
-        'cantidad',
+        //'cantidad',
         'tipo'
 
     ]; 

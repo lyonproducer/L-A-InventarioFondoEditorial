@@ -39,4 +39,11 @@ Route::group([
     Route::resource('entradas',   'Materiales\EntradasController');
     Route::resource('entregas',   'Materiales\EntregasController');
 
+
+    //Publicaciones
+    Route::resource('publicaciones',   'Publicaciones\PublicacionesController');
+    Route::resource('stocks',   'Publicaciones\StocksController');
+    Route::resource('salidas',   'Publicaciones\SalidasController');
+
+
 });
