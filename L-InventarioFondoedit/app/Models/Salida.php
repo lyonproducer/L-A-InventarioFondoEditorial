@@ -12,12 +12,15 @@ class Salida extends Model
         
         'sede',
         'cliente',
-        //'cantidad',
-        'tipo'
+        'tipo_entrega'
 
     ]; 
 
     public function publicaciones(){
         return $this->belongsToMany(Publicacion::class);
+    }
+
+    public function venta(){
+        return $this->hasOne(Venta::class);
     }
 }

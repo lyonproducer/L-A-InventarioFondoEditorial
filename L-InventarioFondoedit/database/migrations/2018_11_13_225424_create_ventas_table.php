@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePublicacionesHasSalidasTable extends Migration
+class CreateVentasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,20 +13,16 @@ class CreatePublicacionesHasSalidasTable extends Migration
      */
     public function up()
     {
-        Schema::create('publicacion_salida', function (Blueprint $table) {
+        Schema::create('ventas', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->integer('publicacion_id')->unsigned();
+            $table->string('bauche');
+            $table->string('banco');
+            $table->integer('monto_debito')->nullable(); 
+            $table->integer('monto_credito')->nullable(); 
+
             $table->integer('salida_id')->unsigned();
-
-            $table->integer('cantidad');
-            $table->string('tipo_cantidad');
-
             $table->timestamps();
-
-            $table->foreign('publicacion_id')->references('id')->on('publicaciones')
-            ->onDelete('cascade')
-            ->onUpdate('cascade');
 
             $table->foreign('salida_id')->references('id')->on('salidas')
             ->onDelete('cascade')
@@ -41,6 +37,6 @@ class CreatePublicacionesHasSalidasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('publicaciones_has_salidas');
+        Schema::dropIfExists('ventas');
     }
 }
