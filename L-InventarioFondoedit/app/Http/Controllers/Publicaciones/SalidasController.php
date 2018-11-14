@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Publicaciones;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Salida;
+use App\Models\Publicacion;
 
 class SalidasController extends Controller
 {
@@ -37,10 +38,15 @@ class SalidasController extends Controller
     public function store(Request $request)
     {
         //dd($request->all());
+        //dd($request->get('publicaciones'));
+        $publicaciones = $request->get('publicaciones');
 
-        //foreach(  as  ){
+        foreach($publicacion  as $publicaciones){
 
-        //}
+            $publicacion = Publicacion::find($publicacion->publicacion_id);
+            $publicacion->cantidad_cd += $request->cantidad;
+            $publicacion->save();
+        }
 
         $salida=Salida::create($request->all());
 

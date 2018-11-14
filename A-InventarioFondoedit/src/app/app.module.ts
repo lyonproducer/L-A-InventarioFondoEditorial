@@ -28,6 +28,10 @@ import { VariablesComponent } from './components/global/variables/variables.comp
 import { EntradasFormComponent } from './components/materiales-module/Entradas/entradas-form/entradas-form.component';
 import { EntregasFormComponent } from './components/materiales-module/Entregas/entregas-form/entregas-form.component';
 import { EntregasViewComponent } from './components/materiales-module/Entregas/entregas-view/entregas-view.component';
+import { PublicacionesModuleComponent } from './components/publicaciones-module/publicaciones-module.component';
+import { NavbarPublicacionesComponent } from './components/publicaciones-module/navbar-publicaciones/navbar-publicaciones.component';
+import { PublicacionesListComponent } from './components/publicaciones-module/publicaciones/publicaciones-list/publicaciones-list.component';
+import { StocksListComponent } from './components/publicaciones-module/stocks/stocks-list/stocks-list.component';
 
 const routes: Route[] = [
   
@@ -37,6 +41,17 @@ const routes: Route[] = [
   {path: 'request-pass-reset', component: RequestResetComponent, canActivate:[BeforeLoginService]},
   {path: 'response-pass-reset', component: ResponseResetComponent, canActivate:[BeforeLoginService]},
   {path: 'materialesModule', component: MaterialesModuleComponent, canActivate:[AfterLoginService]},
+  
+  {
+    path: 'publicacionesModule', 
+    component: PublicacionesModuleComponent, 
+    canActivate:[AfterLoginService],
+    children:[
+      {path: 'publicaciones', component: PublicacionesListComponent},
+      {path: 'stocks', component: StocksListComponent}
+    ] 
+  },
+  
 ];
 
 @NgModule({
@@ -61,6 +76,10 @@ const routes: Route[] = [
     EntradasFormComponent,
     EntregasFormComponent,
     EntregasViewComponent,
+    PublicacionesModuleComponent,
+    NavbarPublicacionesComponent,
+    PublicacionesListComponent,
+    StocksListComponent,
     
   ],
   imports: [
