@@ -44,6 +44,7 @@ Route::group([
     Route::resource('publicaciones',   'Publicaciones\PublicacionesController');
     Route::resource('stocks',   'Publicaciones\StocksController');
     Route::resource('salidas',   'Publicaciones\SalidasController');
+    Route::resource('ventas',   'Publicaciones\VentasController');
 
 
 });
