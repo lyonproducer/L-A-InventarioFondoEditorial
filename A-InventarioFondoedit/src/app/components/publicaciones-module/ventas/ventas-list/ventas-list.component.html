@@ -1,4 +1,4 @@
-<h3 class="mt-5">Lista de entradas de publicaciones</h3>
+<h3 class="mt-5">Lista de ventas registradas</h3>
 <hr>
 
 <div class="card mt-5">
@@ -6,19 +6,19 @@
   <div class="card-header">
     <div class="row">
       <div class="col-2">
-        <p class="ml-3 m-0">Título</p>
+        <p class="ml-3 m-0">Bauche</p>
       </div>
 
       <div class="col-2">
-        <p class="m-0">Cantidad</p>
+        <p class="m-0">Banco</p>
       </div>
 
       <div class="col-2">
-        <p class="m-0">Tipo de entrada</p>
+        <p class="m-0">Monto debito</p>
       </div>
 
       <div class="col-2">
-        <p class="m-0">Producto</p>
+        <p class="m-0">Monto credito</p>
       </div>
 
       <div class="col">
@@ -31,27 +31,27 @@
   <div class="card-body" >
 
     <ul class="list-group list-group-flush">
-      <li class="list-group-item" *ngFor="let stock of stockService.stocks 
+      <li class="list-group-item" *ngFor="let venta of ventasService.ventas 
       | paginate: { itemsPerPage: 5, currentPage: p, id: 'first'}">
         <div class="row">
           <div class="col-2">
-            <p>{{stock.publicacion.titulo}}</p>
+            <p>{{venta.publicacion.titulo}}</p>
           </div>
 
           <div class="col-2">
-            <p class="m-0">{{stock.cantidad}}</p>
+            <p class="m-0">{{venta.cantidad}}</p>
           </div>
 
           <div class="col-2">
-            <p class="m-0">{{stock.tipo_entrega}}</p>
+            <p class="m-0">{{venta.tipo_entrega}}</p>
           </div>
 
           <div class="col-2">
-            <p class="m-0">{{stock.tipo_cantidad}}</p>
+            <p class="m-0">{{venta.tipo_cantidad}}</p>
           </div>
 
           <div class="col">
-            <a class="float-right ml-4 text-danger" (click)="deleteStock(stock.id)" 
+            <a class="float-right ml-4 text-danger" (click)="deleteventa(venta.id)" 
             style="cursor:pointer;">
               <i class="far fa-trash-alt"></i>
             </a>

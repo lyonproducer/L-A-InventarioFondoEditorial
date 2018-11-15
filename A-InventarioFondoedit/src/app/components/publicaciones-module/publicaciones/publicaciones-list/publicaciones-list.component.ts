@@ -19,6 +19,7 @@ export class PublicacionesListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.publicacionesService.publicaciones = [];
     this.updatePublicacionesList();
   }
 
@@ -29,7 +30,6 @@ export class PublicacionesListComponent implements OnInit {
         this.publicacionesService.publicaciones = data as Publicacion[];
       }
     );
-
   }
 
   deletePublicacion(id){

@@ -33,6 +33,8 @@
 
   <div class="card-body" >
 
+    <p *ngIf="this.publicacionesService.publicaciones.length == 0">No hay publicaciones disponibles</p>
+
     <ul class="list-group list-group-flush">
       <li class="list-group-item" *ngFor="let publicacion of publicacionesService.publicaciones 
       | paginate: { itemsPerPage: 5, currentPage: p, id: 'first'}">

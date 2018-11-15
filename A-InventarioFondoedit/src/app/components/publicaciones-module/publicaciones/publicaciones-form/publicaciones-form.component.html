@@ -73,8 +73,12 @@
       <div class="col-3">
         <div class="form-group">
           <label for="origen">Origen</label>
-          <input required [(ngModel)]="publicacion.origen" type="text" name="origen" #name="ngModel" id="origen"
-            placeholder="Inserte el origen" class="form-control">
+          <select required class="form-control" id="origen" [(ngModel)]="publicacion.origen" name="origen"
+          #name="ngModel">
+            <option selected='true' disabled>Seleccionar origen</option>
+            <option>Interno</option>
+            <option>Externo</option>
+          </select>
         </div>
       </div>
 
