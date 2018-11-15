@@ -9,7 +9,7 @@
         <p class="ml-3 m-0">Código</p>
       </div>
 
-      <div class="col-2">
+      <div class="col-4">
         <p class="m-0">Titulo</p>
       </div>
 
@@ -17,12 +17,12 @@
         <p class="m-0">Tipo de publicación</p>
       </div>
 
-      <div class="col-2">
-        <p class="m-0">Cantidad CD</p>
+      <div class="col-1">
+        <p class="m-0">CD</p>
       </div>
       
-      <div class="col-2">
-        <p class="m-0">Cantidad Impresa</p>
+      <div class="col-1">
+        <p class="m-0">Impreso</p>
       </div>
 
       <div class="col">
@@ -43,7 +43,7 @@
             <p>{{publicacion.codigo}}</p>
           </div>
 
-          <div class="col-2">
+          <div class="col-4">
             <p class="m-0">{{publicacion.titulo}}</p>
           </div>
 
@@ -51,22 +51,22 @@
             <p class="m-0">{{publicacion.tipo_publicacion}}</p>
           </div>
 
-          <div class="col-2">
+          <div class="col-1">
             <p class="m-0">{{publicacion.cantidad_cd}}</p>
           </div>
 
-          <div class="col-2">
+          <div class="col-1">
             <p class="m-0">{{publicacion.cantidad_impresa}}</p>
           </div>
 
           <div class="col">
             <a class="float-right ml-4 text-danger" (click)="deletePublicacion(publicacion.id)" 
-            style="cursor:pointer;">
+            style="cursor:pointer;" matTooltip="Eliminar Publicación">
               <i class="far fa-trash-alt"></i>
             </a>
         
             <a class="float-right ml-4 text-secondary" (click)="onViewPublicacion(publicacion)"
-            style="cursor:pointer;">
+            style="cursor:pointer;" matTooltip="Ver Publicación">
               <i class="fa fa-eye" aria-hidden="true"></i>
             </a>
           </div>

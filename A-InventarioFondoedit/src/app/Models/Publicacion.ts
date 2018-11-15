@@ -1,5 +1,5 @@
 export interface Publicacion {
-            
+    id?:number;
     tema:string; 
     titulo:string; 
     fecha_elaboracion:string;

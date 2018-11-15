@@ -15,5 +15,13 @@ export class StocksService {
   getStocks(){
     return this.http.get(this.variables.baseApi + '/stocks');
   }
+
+  postStock(data){
+    return this.http.post(this.variables.baseApi + '/stocks',data);
+  }
+
+  deleteStock(id){
+    return this.http.delete(this.variables.baseApi + '/stocks/'+ id);
+  }
   
 }

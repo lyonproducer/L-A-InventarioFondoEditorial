@@ -47,15 +47,15 @@
                 </div>
 
                 <div class="col">
-                  <a class="float-right ml-4 text-danger" (click)="deleteMaterial(material.id)" style="cursor:pointer;">
+                  <a class="float-right ml-4 text-danger" (click)="deleteMaterial(material.id)" style="cursor:pointer;" matTooltip="Borrar Material">
                     <i class="far fa-trash-alt"></i>
                   </a>
 
-                  <a class="float-right ml-4 text-secondary" (click)="onEdit(material)" style="cursor:pointer;">
+                  <a class="float-right ml-4 text-secondary" (click)="onEdit(material)" style="cursor:pointer;" matTooltip="Modificar Material">
                     <i class="far fa-edit"></i>
                   </a>
 
-                  <a class="float-right ml-4 text-secondary" (click)="onViewMaterial(material)" style="cursor:pointer;">
+                  <a class="float-right ml-4 text-secondary" (click)="onViewMaterial(material)" style="cursor:pointer;" matTooltip="Ver Material">
                     <i class="fa fa-eye" aria-hidden="true"></i>
                   </a>
                 </div>
@@ -115,11 +115,13 @@
                   <p class="m-0">{{entrada.created_at}}</p>
                 </div>
 
+                <!--
                 <div class="col">
                   <a class="float-right ml-4 text-secondary" (click)="onViewMaterial(material)" style="cursor:pointer;">
                     <i class="fa fa-eye" aria-hidden="true"></i>
                   </a>
                 </div>
+                -->
               </div>
             </li>
 
@@ -187,7 +189,7 @@
                 </div>
 
                 <div class="col">
-                  <a class="float-right ml-4 text-secondary" (click)="onViewEntrega(entrega)" style="cursor:pointer;">
+                  <a class="float-right ml-4 text-secondary" (click)="onViewEntrega(entrega)" style="cursor:pointer;" matTooltip="Ver Entrega">
                     <i class="fa fa-eye" aria-hidden="true"></i>
                   </a>
                 </div>

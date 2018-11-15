@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { StocksService } from '../../../../services/admin/stocks.service';
 import { Stock } from '../../../../Models/Stock';
+import { StocksFormComponent } from '../stocks-form/stocks-form.component';
+import { MatDialog } from '@angular/material/dialog';
+import { SnotifyService } from 'ng-snotify';
 
 @Component({
   selector: 'app-stocks-list',
@@ -10,7 +13,9 @@ import { Stock } from '../../../../Models/Stock';
 export class StocksListComponent implements OnInit {
 
   constructor(
-    public stockService:StocksService
+    public stockService:StocksService,
+    public dialog: MatDialog,
+    public snotify: SnotifyService
   ) { }
 
   ngOnInit() {
@@ -27,4 +32,26 @@ export class StocksListComponent implements OnInit {
       }
     );
   }
+
+  
+  addStock(){
+    const dialogRef = this.dialog.open(StocksFormComponent, {
+      width: '45%'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The Material dialog was closed');
+    });
+  }
+
+  deleteStock(id){
+    this.stockService.deleteStock(id).subscribe(
+      data => {
+        console.log(data);
+        this.snotify.success('Eliminado correctamente',{timeout:0});
+        this.updateStockList();
+      }
+    );
+  }
+  
 }

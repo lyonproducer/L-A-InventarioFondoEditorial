@@ -5,7 +5,7 @@
 
   <div class="card-header">
     <div class="row">
-      <div class="col-2">
+      <div class="col-4">
         <p class="ml-3 m-0">Título</p>
       </div>
 
@@ -22,7 +22,7 @@
       </div>
 
       <div class="col">
-        <button class="btn btn-info float-right" routerLink="crear">Añadir</button>
+        <button class="btn btn-info float-right" (click)="addStock()">Añadir</button>
       </div>
 
     </div>
@@ -34,7 +34,7 @@
       <li class="list-group-item" *ngFor="let stock of stockService.stocks 
       | paginate: { itemsPerPage: 5, currentPage: p, id: 'first'}">
         <div class="row">
-          <div class="col-2">
+          <div class="col-4">
             <p>{{stock.publicacion.titulo}}</p>
           </div>
 
@@ -52,7 +52,7 @@
 
           <div class="col">
             <a class="float-right ml-4 text-danger" (click)="deleteStock(stock.id)" 
-            style="cursor:pointer;">
+            style="cursor:pointer;" matTooltip="Borrar Entrada">
               <i class="far fa-trash-alt"></i>
             </a>
           </div>

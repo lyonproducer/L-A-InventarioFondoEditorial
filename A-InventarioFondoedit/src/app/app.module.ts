@@ -9,6 +9,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {NgxPaginationModule} from 'ngx-pagination';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -36,6 +37,7 @@ import { PublicacionesFormComponent } from './components/publicaciones-module/pu
 import { PublicacionesViewComponent } from './components/publicaciones-module/publicaciones/publicaciones-view/publicaciones-view.component';
 import { SalidasListComponent } from './components/publicaciones-module/salidas/salidas-list/salidas-list.component';
 import { VentasListComponent } from './components/publicaciones-module/ventas/ventas-list/ventas-list.component';
+import { StocksFormComponent } from './components/publicaciones-module/stocks/stocks-form/stocks-form.component';
 
 const routes: Route[] = [
   
@@ -68,7 +70,8 @@ const routes: Route[] = [
     EntradasFormComponent,
     EntregasFormComponent,
     EntregasViewComponent,
-    PublicacionesViewComponent
+    PublicacionesViewComponent,
+    StocksFormComponent
   ],
   declarations: [
     AppComponent,
@@ -92,6 +95,7 @@ const routes: Route[] = [
     PublicacionesViewComponent,
     SalidasListComponent,
     VentasListComponent,
+    StocksFormComponent,
     
   ],
   imports: [
@@ -104,7 +108,8 @@ const routes: Route[] = [
     BrowserAnimationsModule,
     MatDialogModule,
     MatProgressBarModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    MatTooltipModule
   ],
   providers: [
     { provide: 'SnotifyToastConfig', useValue: ToastDefaults},

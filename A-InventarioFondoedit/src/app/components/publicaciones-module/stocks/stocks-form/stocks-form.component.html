@@ -1,0 +1,77 @@
+<h2 mat-dialog-title class="text-center" *ngIf="!loading">Nuevo stock</h2>
+<h2 mat-dialog-title class="text-center" *ngIf="loading">Añadiendo stock</h2>
+
+<hr class="mt-2 mb-0">
+
+<mat-dialog-content *ngIf="!loading">
+
+  <form #stockForm="ngForm" (ngSubmit)="onSubmit(stockForm)">
+
+    <input required type="hidden" name="publicacion_id" #id="ngModel" 
+    [(ngModel)]="stock.publicacion_id">
+
+    <div class="row">
+
+      <div class="col">
+        <div class="form-group">
+          <div class="form-group">
+            <label for="exampleFormControlSelect1">Selecciona la publicacion</label>
+            <select class="form-control"  id="exampleFormControlSelect1" 
+            (change)="asignPulicacionID($event.target.value)">
+              <option selected="true" disabled="disabled">Seleccionar</option>
+              <option *ngFor="let publicacion of publicacionesService.publicaciones">
+                {{publicacion.titulo}}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="form-group">
+          <label for="cantidad">Cantidad</label>
+          <input required [(ngModel)]="stock.cantidad" type="number" name="cantidad" 
+          #name="ngModel" id="cantidad" placeholder="Inserte la cantidad" class="form-control" min="1">
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+          <label for="tipo_entrega">Tipo de entrega</label>
+          <select required [(ngModel)]="stock.tipo_entrega" type="text" name="tipo_entrega" #name="ngModel" id="tipo_entrega" placeholder="Nombre de la tipo de entrega" class="form-control">
+            <option selected="true" disabled>Seleccionar</option>
+            <option>Donación</option>
+            <option>Adquisición</option>
+            <option>Devolución</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="form-group">
+          <label for="proyecto">Tipo de producto</label>
+          <select required class="form-control"  id="exampleFormControlSelect1"
+          [(ngModel)]="stock.tipo_cantidad" #name="ngModel" name="tipo_cantidad" >
+            <option selected="true" disabled>Seleccionar</option>
+            <option>Físico</option>
+            <option>CD</option>
+          </select>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="form-group text-center">
+      <button type="submit" class="btn btn-primary" style="padding:8px 100px;margin-top:25px;" [disabled]="!stockForm.valid">
+        Guardar Complemento
+      </button>
+    </div>
+
+  </form>
+
+</mat-dialog-content>
+
+<mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
