@@ -1,9 +1,9 @@
-<h2 mat-dialog-title class="text-center">{{data.titulo}}</h2>
-
-<hr class="mt-2 mb-0">
+<h2 class="text-center">Título: {{data.titulo}}</h2>
 
 <mat-dialog-content>
 
+  <h5>Informacion</h5>
+  <hr>
   <div class="row mt-4">
 
     <div class="col">
@@ -36,22 +36,6 @@
       <p>{{data.tipo_publicacion}}</p>
     </div>
 
-    <div class="col" *ngIf="data.cantidad_impresa">
-      <strong>Cantidad Fisico:</strong>
-      <p>{{data.cantidad_impresa}}</p>
-    </div>
-
-
-  </div>
-
-  <div class="row">
-
-    <div class="col" *ngIf="data.cantidad_cd">
-      <strong>Cantidad en CD:</strong>
-      <p>{{data.cantidad_cd}}</p>
-    </div>
-
-
     <div class="col">
       <strong>Fecha de Elaboración: </strong>
       <p>{{data.fecha_elaboracion}}</p>
@@ -67,8 +51,8 @@
   <div class="row">
 
     <div class="col">
-      <strong>Tipo de publicación:</strong>
-      <p>{{data.tipo_publicacion}}</p>
+      <strong>Autor:</strong>
+      <p>{{data.autor}}</p>
     </div>
 
     <div class="col">
@@ -79,6 +63,50 @@
     <div class="col">
       <strong>Categoria: </strong>
       <p>{{data.categoria}}</p>
+    </div>
+
+  </div>
+
+  <h5>Disponibilidad</h5>
+  <hr>
+
+  <div class="row">
+
+    <div class="col" *ngIf="data.cantidad_cd">
+      <strong>Cantidad en CD:</strong>
+      <p>{{data.cantidad_cd}}</p>
+    </div>
+
+    <div class="col" *ngIf="data.cantidad_impresa">
+      <strong>Cantidad Fisico:</strong>
+      <p>{{data.cantidad_impresa}}</p>
+    </div>
+
+    <div class="col" *ngIf="data.url_digital">
+      <strong>Link digital:</strong>
+      <a href="{{data.url_digital}}">{{data.url_digital}}</a>
+    </div>
+
+  </div>
+
+  <h5 *ngIf="data.volumen">Detalle de revista</h5>
+  <hr *ngIf="data.volumen">
+
+  <div class="row" *ngIf="data.volumen">
+
+    <div class="col">
+      <strong>Volumen:</strong>
+      <p>{{data.volumen}}</p>
+    </div>
+
+    <div class="col">
+      <strong>Periodo: </strong>
+      <p>{{data.periodo}}</p>
+    </div>
+
+    <div class="col">
+      <strong>Número de edicion: </strong>
+      <p>{{data.numero_edicion}}</p>
     </div>
 
   </div>
