@@ -1,0 +1,86 @@
+<h2 mat-dialog-title class="text-center">{{data.titulo}}</h2>
+
+<hr class="mt-2 mb-0">
+
+<mat-dialog-content>
+
+  <div class="row mt-4">
+
+    <div class="col">
+      <strong>Codigo: </strong>
+      <p>{{data.codigo}}</p>
+    </div>
+
+    <div class="col">
+      <strong>Tema: </strong>
+      <p>{{data.tema}}</p>
+    </div>
+
+    <div class="col">
+      <strong>Departamento: </strong>
+      <p>{{data.departamento}}</p>
+    </div>
+
+
+  </div>
+
+  <div class="row">
+
+    <div class="col">
+      <strong>Descripción: </strong>
+      <p>{{data.descripcion}}</p>
+    </div>
+
+    <div class="col">
+      <strong>Tipo de publicación:</strong>
+      <p>{{data.tipo_publicacion}}</p>
+    </div>
+
+    <div class="col" *ngIf="data.cantidad_impresa">
+      <strong>Cantidad Fisico:</strong>
+      <p>{{data.cantidad_impresa}}</p>
+    </div>
+
+
+  </div>
+
+  <div class="row">
+
+    <div class="col" *ngIf="data.cantidad_cd">
+      <strong>Cantidad en CD:</strong>
+      <p>{{data.cantidad_cd}}</p>
+    </div>
+
+
+    <div class="col">
+      <strong>Fecha de Elaboración: </strong>
+      <p>{{data.fecha_elaboracion}}</p>
+    </div>
+
+    <div class="col">
+      <strong>Origen: </strong>
+      <p>{{data.origen}}</p>
+    </div>
+
+  </div>
+
+  <div class="row">
+
+    <div class="col">
+      <strong>Tipo de publicación:</strong>
+      <p>{{data.tipo_publicacion}}</p>
+    </div>
+
+    <div class="col">
+      <strong>ISBN: </strong>
+      <p>{{data.isbn}}</p>
+    </div>
+
+    <div class="col">
+      <strong>Categoria: </strong>
+      <p>{{data.categoria}}</p>
+    </div>
+
+  </div>
+
+</mat-dialog-content>

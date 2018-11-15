@@ -1,3 +1,82 @@
-<p>
-  publicaciones-list works!
-</p>
+<h3 class="mt-5">Inventario de publicaciones </h3>
+<hr>
+
+<div class="card mt-5">
+
+  <div class="card-header">
+    <div class="row">
+      <div class="col-2">
+        <p class="ml-3 m-0">Código</p>
+      </div>
+
+      <div class="col-2">
+        <p class="m-0">Titulo</p>
+      </div>
+
+      <div class="col-2">
+        <p class="m-0">Tipo de publicación</p>
+      </div>
+
+      <div class="col-2">
+        <p class="m-0">Cantidad CD</p>
+      </div>
+      
+      <div class="col-2">
+        <p class="m-0">Cantidad Impresa</p>
+      </div>
+
+      <div class="col">
+        <button class="btn btn-info float-right" routerLink="crear">Añadir</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-body" >
+
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item" *ngFor="let publicacion of publicacionesService.publicaciones 
+      | paginate: { itemsPerPage: 5, currentPage: p, id: 'first'}">
+        <div class="row">
+          <div class="col-2">
+            <p>{{publicacion.codigo}}</p>
+          </div>
+
+          <div class="col-2">
+            <p class="m-0">{{publicacion.titulo}}</p>
+          </div>
+
+          <div class="col-2">
+            <p class="m-0">{{publicacion.tipo_publicacion}}</p>
+          </div>
+
+          <div class="col-2">
+            <p class="m-0">{{publicacion.cantidad_cd}}</p>
+          </div>
+
+          <div class="col-2">
+            <p class="m-0">{{publicacion.cantidad_impresa}}</p>
+          </div>
+
+          <div class="col">
+            <a class="float-right ml-4 text-danger" (click)="deletePublicacion(publicacion.id)" 
+            style="cursor:pointer;">
+              <i class="far fa-trash-alt"></i>
+            </a>
+        
+            <a class="float-right ml-4 text-secondary" (click)="onViewPublicacion(publicacion)"
+            style="cursor:pointer;">
+              <i class="fa fa-eye" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="card-footer text-center">
+    <pagination-controls (pageChange)="p = $event" id="first"
+    previousLabel="Anterior"
+    nextLabel="Siguiente"></pagination-controls>
+  </div>
+
+</div>

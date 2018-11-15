@@ -32,6 +32,8 @@ import { PublicacionesModuleComponent } from './components/publicaciones-module/
 import { NavbarPublicacionesComponent } from './components/publicaciones-module/navbar-publicaciones/navbar-publicaciones.component';
 import { PublicacionesListComponent } from './components/publicaciones-module/publicaciones/publicaciones-list/publicaciones-list.component';
 import { StocksListComponent } from './components/publicaciones-module/stocks/stocks-list/stocks-list.component';
+import { PublicacionesFormComponent } from './components/publicaciones-module/publicaciones/publicaciones-form/publicaciones-form.component';
+import { PublicacionesViewComponent } from './components/publicaciones-module/publicaciones/publicaciones-view/publicaciones-view.component';
 
 const routes: Route[] = [
   
@@ -48,6 +50,7 @@ const routes: Route[] = [
     canActivate:[AfterLoginService],
     children:[
       {path: 'publicaciones', component: PublicacionesListComponent},
+      {path: 'publicaciones/crear', component: PublicacionesFormComponent},
       {path: 'stocks', component: StocksListComponent}
     ] 
   },
@@ -60,7 +63,8 @@ const routes: Route[] = [
     MaterialesFormComponent,
     EntradasFormComponent,
     EntregasFormComponent,
-    EntregasViewComponent
+    EntregasViewComponent,
+    PublicacionesViewComponent
   ],
   declarations: [
     AppComponent,
@@ -80,6 +84,8 @@ const routes: Route[] = [
     NavbarPublicacionesComponent,
     PublicacionesListComponent,
     StocksListComponent,
+    PublicacionesFormComponent,
+    PublicacionesViewComponent,
     
   ],
   imports: [

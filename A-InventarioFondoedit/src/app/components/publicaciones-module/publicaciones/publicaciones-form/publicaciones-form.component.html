@@ -1,0 +1,212 @@
+<h3 class="mt-5">Añadir nueva publicacion</h3>
+<hr>
+
+<form #publicacionForm="ngForm" (ngSubmit)="onSubmit(publicacionForm)">
+
+  <div class="row">
+
+    <div class="col-6">
+      <div class="form-group">
+        <label for="tipo_publicacion">Tipo</label>
+        <select required class="form-control" id="tipo_publicacion" [(ngModel)]="publicacion.tipo_publicacion" name="tipo_publicacion"
+          #name="ngModel" (change)="activarForm($event.target.value)">
+          <option selected disabled>Seleccionar</option>
+          <option>Revista</option>
+          <option>Libro</option>
+        </select>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div *ngIf="revista || libro">
+    <h5>Informacion de la publicación</h5>
+    <hr>
+
+    <div class="row">
+
+      <div class="col-4">
+        <div class="form-group">
+          <label for="titulo">Título</label>
+          <input required [(ngModel)]="publicacion.titulo" type="text" name="titulo" #name="ngModel" id="titulo"
+            placeholder="Inserte el titulo" class="form-control">
+        </div>
+      </div>
+
+      <div class="col-4">
+        <div class="form-group">
+          <label for="tema">Tema</label>
+          <input required [(ngModel)]="publicacion.tema" type="text" name="tema" #name="ngModel" id="tema" placeholder="Inserte el tema"
+            class="form-control">
+        </div>
+      </div>
+
+      <div class="col-4">
+        <div class="form-group">
+          <label for="departamento">Departamento</label>
+          <input required [(ngModel)]="publicacion.departamento" type="text" name="departamento" #name="ngModel" id="departamento"
+            placeholder="Inserte el departamento" class="form-control">
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row">
+
+      <div class="col-3">
+        <div class="form-group">
+          <label for="isbn">ISBN</label>
+          <input required [(ngModel)]="publicacion.isbn" type="text" name="isbn" #name="ngModel" id="isbn" placeholder="Inserte el isbn"
+            class="form-control">
+        </div>
+      </div>
+
+      <div class="col-3">
+        <div class="form-group">
+          <label for="codigo">Codigo</label>
+          <input required [(ngModel)]="publicacion.codigo" type="text" name="codigo" #name="ngModel" id="codigo"
+            placeholder="Inserte el codigo" class="form-control">
+        </div>
+      </div>
+
+      <div class="col-3">
+        <div class="form-group">
+          <label for="origen">Origen</label>
+          <input required [(ngModel)]="publicacion.origen" type="text" name="origen" #name="ngModel" id="origen"
+            placeholder="Inserte el origen" class="form-control">
+        </div>
+      </div>
+
+      <div class="col-3">
+        <div class="form-group">
+          <label for="fecha_elaboracion">Fecha de publicación</label><br>
+          <div class="input-group-text">
+            <input required id="fecha_elaboracion" class="ml-2" type="date" name="fecha_elaboracion" [(ngModel)]="publicacion.fecha_elaboracion"
+              [value]="publicacion.fecha_elaboracion">
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+    <div class="row">
+
+      <div class="col-4">
+        <div class="form-group">
+          <label for="descripcion">Descripción</label>
+          <textarea required [(ngModel)]="publicacion.descripcion" type="text" name="descripcion" id="descripcion"
+            class="form-control" placeholder="Descripción de la publicación"></textarea>
+        </div>
+      </div>
+
+      <div class="col-4">
+        <div class="form-group">
+          <label for="autor">Autores</label>
+          <textarea required [(ngModel)]="publicacion.autor" type="text" name="autor" id="autor"
+            class="form-control" placeholder="Autores"></textarea>
+        </div>
+      </div>
+
+      <div class="col-4">
+        <div class="form-group">
+          <label for="categoria">Categoría</label>
+          <input required [(ngModel)]="publicacion.categoria" type="text" name="categoria" #name="ngModel" id="categoria"
+            placeholder="Inserte el categoria" class="form-control">
+        </div>
+      </div>
+    </div>
+
+    <h5>Disponibilidad</h5>
+    <hr>
+
+    <div class="row">
+
+      <div class="col">
+        <div class="form-group">
+          <label for="cantidad_cd">Cantidad en disco</label>
+          <input [(ngModel)]="publicacion.cantidad_cd" type="number" name="cantidad_cd" #name="ngModel" id="cantidad_cd"
+            placeholder="Inserte la cantidad en cd" class="form-control" min="1">
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="form-group">
+          <label for="cantidad_impresa">Cantidad impresa</label>
+          <input [(ngModel)]="publicacion.cantidad_impresa" type="number" name="cantidad_impresa" #name="ngModel" id="cantidad_impresa"
+            placeholder="Inserte la Cantidad impresa" class="form-control" min="1">
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="form-group">
+          <label for="url_digital">Url Digital</label>
+          <input [(ngModel)]="publicacion.url_digital" type="text" name="url_digital" #name="ngModel" id="url_digital"
+            placeholder="Inserte el url" class="form-control">
+        </div>
+      </div>
+
+    </div>
+
+    <h5>Costos</h5>
+    <hr>
+
+    <div class="row">
+
+      <div class="col">
+        <div class="form-group">
+          <label for="precio_unitario">Precio Unitario (BsS)</label>
+          <input required [(ngModel)]="publicacion.precio_unitario" type="number" name="precio_unitario" #name="ngModel" id="precio_unitario"
+            placeholder="Inserte el precio" class="form-control" min="1">
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="form-group">
+          <label for="costo_unitario">Costo Unitario (BsS)</label>
+          <input required [(ngModel)]="publicacion.costo_unitario" type="number" name="costo_unitario" #name="ngModel" id="costo_unitario"
+            placeholder="Inserte el costo" class="form-control" min="1">
+        </div>
+      </div>
+
+    </div>
+
+    <h5 *ngIf="revista">Informacion detallada de la revista</h5>
+    <hr *ngIf="revista">
+    <div class="row" *ngIf="revista">
+
+      <div class="col">
+        <div class="form-group">
+          <label for="volumen">Volumen</label>
+          <input [(ngModel)]="publicacion.volumen" type="number" name="volumen" #name="ngModel" id="volumen"
+            placeholder="Inserte el volumen" class="form-control" min="1">
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="form-group">
+          <label for="periodo">Período</label>
+          <input [(ngModel)]="publicacion.periodo" type="text" name="periodo" #name="ngModel" id="periodo" placeholder="Inserte el Periodo"
+            class="form-control" min="1">
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="form-group">
+          <label for="numero_edicion">Número de edición</label>
+          <input [(ngModel)]="publicacion.numero_edicion" type="number" name="numero_edicion" #name="ngModel" id="numero_edicion"
+            placeholder="Inserte el Numero de edición" class="form-control" min="1">
+        </div>
+      </div>
+
+    </div>
+
+    <div class="form-group text-center">
+      <button type="submit" class="btn btn-primary" style="padding:8px 100px;margin-top:25px;" [disabled]="!publicacionForm.valid">
+        Guardar publicación
+      </button>
+    </div>
+
+  </div>
+</form>

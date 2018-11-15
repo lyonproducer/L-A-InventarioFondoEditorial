@@ -34,10 +34,10 @@ class CreatePublicacionesTable extends Migration
             $table->string('precio_unitario');
 
             $table->string('codigo');
-            $table->string('volumen');
-            $table->string('periodo');
-            $table->string('numero_edicion');
-            $table->string('autor');
+            $table->string('volumen')->nullable();
+            $table->string('periodo')->nullable();
+            $table->string('numero_edicion')->nullable();
+            $table->string('autor')->nullable();
             
 
             $table->timestamps();
