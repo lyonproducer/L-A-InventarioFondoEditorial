@@ -18,6 +18,8 @@ export class PublicacionesListComponent implements OnInit {
     public dialog: MatDialog
   ) { }
 
+  p:number=1;
+  
   ngOnInit() {
     this.publicacionesService.publicaciones = [];
     this.updatePublicacionesList();

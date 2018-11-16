@@ -1,0 +1,177 @@
+<h3 class="mt-5 text-center">Nueva salida</h3>
+
+<hr class="mt-2 mb-5">
+
+<div *ngIf="!loading">
+
+  <form #salidaForm="ngForm" (ngSubmit)="onSubmit()">
+
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+          <label for="sede">Sede</label>
+          <input required [(ngModel)]="salida.sede" type="text" name="sede" min="1" #name="ngModel" id="sede"
+            placeholder="Inserte la sede" class="form-control">
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="form-group">
+          <label for="cliente">Cliente</label>
+          <input required [(ngModel)]="salida.cliente" type="text" name="cliente" min="1" #name="ngModel" id="cliente"
+            placeholder="Inserte la cliente" class="form-control">
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+          <div class="form-group">
+            <label for="exampleFormControlSelect1">Selecciona la publicacion</label>
+            <select class="form-control" id="exampleFormControlSelect1" (change)="asignPulicacionID($event.target.value)">
+              <option selected="true" disabled="disabled">Seleccionar</option>
+              <option *ngFor="let publicacion of publicacionesService.publicaciones">
+                {{publicacion.titulo}}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-3">
+        <div class="form-group">
+          <label for="proyecto">Producto</label>
+          <select [disabled]="publicacion.publicacion_id==null" class="form-control" id="exampleFormControlSelect1" (change)="max()" 
+          [(ngModel)]="publicacion.tipo_cantidad" #name="ngModel"
+            name="tipo_cantidad">
+            <option>Físico</option>
+            <option>CD</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="col-2">
+        <div class="form-group">
+          <label for="cantidad">Cantidad</label>
+          <input [disabled]="publicacion.tipo_cantidad==null" [(ngModel)]="publicacion.cantidad" type="number" name="cantidad" #name="ngModel" id="cantidad"
+            placeholder="Inserte la cantidad" class="form-control" min="1">
+          <small class="text-danger" *ngIf="publicacion.cantidad>maxCantidad">
+            Cantidad Disponible {{maxCantidad}}
+          </small>
+        </div>
+      </div>
+
+      <div class="col">
+        <a class="btn btn-primary mt-4 text-white" (click)="addPublicacion()">Añadir</a>
+      </div>
+
+    </div>
+    <h5>Publicaciones añadidas</h5>
+    <div class="card">
+
+      <div class="card-body">
+        <div class="row">
+          <div class="col-2">
+            <p>Cantidad</p>
+          </div>
+
+          <div class="col-2">
+            <p class="m-0">Producto</p>
+          </div>
+
+          <div class="col-2">
+            <p class="m-0">ID</p>
+          </div>
+
+        </div>
+
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item" *ngFor="let pub of publicaciones">
+            <div class="row">
+              <div class="col-2">
+                <p>{{pub.cantidad}}</p>
+              </div>
+
+              <div class="col-2">
+                <p class="m-0">{{pub.tipo_cantidad}}</p>
+              </div>
+
+              <div class="col-2">
+                <p class="m-0">{{pub.publicacion_id}}</p>
+              </div>
+            </div>
+          </li>
+        </ul>
+
+      </div>
+    </div>
+
+    <div class="row mt-4">
+      <div class="col">
+        <div class="form-group">
+          <label for="exampleFormControlSelect1">Selecciona el tipo de entrega</label>
+          <select required class="form-control" id="exampleFormControlSelect1" 
+          (change)="activeVenta($event.target.value)"
+          [(ngModel)]="salida.tipo_entrega" #name="ngModel"
+            name="tipo_entrega">
+            <option selected="true" disabled="disabled">Seleccionar</option>
+            <option value="Venta">Venta</option>
+            <option value="Donación">Donación</option>
+            <option value="Prestamo">Prestamo</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="" *ngIf="isVenta">
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <label for="bauche">Bauche</label>
+            <input [(ngModel)]="venta.bauche" type="text" name="bauche" min="1" #name="ngModel" id="bauche" placeholder="Inserte la bauche"
+              class="form-control">
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="form-group">
+            <label for="banco">Banco</label>
+            <input [(ngModel)]="venta.banco" type="text" name="banco" min="1" #name="ngModel" id="banco" placeholder="Inserte la banco"
+              class="form-control">
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <label for="monto_debito">Monto debito</label>
+            <input [(ngModel)]="venta.monto_debito" type="number" name="monto_debito" #name="ngModel" id="monto_debito"
+              placeholder="Inserte la monto debito" class="form-control" min="1">
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="form-group">
+            <label for="monto_credito">Monto credito</label>
+            <input [(ngModel)]="venta.monto_credito" type="number" name="monto_credito" #name="ngModel" id="monto_credito"
+              placeholder="Inserte el monto credito" class="form-control" min="1">
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="form-group text-center">
+      <button type="submit" class="btn btn-primary" style="padding:8px 100px;margin-top:25px;" [disabled]="!salidaForm.valid">
+        Guardar salida
+      </button>
+    </div>
+
+  </form>
+
+</div>
+
+<mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>

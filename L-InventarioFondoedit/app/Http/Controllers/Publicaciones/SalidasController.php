@@ -17,7 +17,9 @@ class SalidasController extends Controller
      */
     public function index()
     {
-        //
+        //$salidas = Salida::All();
+        $salidas=Salida::with('publicaciones')->get();
+        return response()->json($salidas);
     }
 
     /**

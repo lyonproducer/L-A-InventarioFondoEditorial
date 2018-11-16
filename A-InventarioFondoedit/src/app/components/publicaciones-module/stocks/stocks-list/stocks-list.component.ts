@@ -12,6 +12,8 @@ import { SnotifyService } from 'ng-snotify';
 })
 export class StocksListComponent implements OnInit {
 
+  p:number=1;
+  
   constructor(
     public stockService:StocksService,
     public dialog: MatDialog,

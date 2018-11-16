@@ -34,10 +34,10 @@
           <input required [(ngModel)]="entrega.cantidad" type="number" name="cantidad" 
           [disabled]="maxCantidad==0" #name="ngModel" id="cantidad" placeholder="Inserte la cantidad" class="form-control" min="1" max="{{maxCantidad}}">
           <small class="text-danger" *ngIf="entrega.cantidad>maxCantidad">
-            Catidad Disponible {{maxCantidad}}
+            Cantidad Disponible {{maxCantidad}}
           </small>
           <small class="text-danger" *ngIf="entrega.cantidad<0">
-            Numero invalido
+            Número invalido
           </small>
         </div>
       </div>

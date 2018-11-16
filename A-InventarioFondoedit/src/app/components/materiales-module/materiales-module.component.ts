@@ -21,6 +21,10 @@ export class MaterialesModuleComponent implements OnInit {
 
   entradas:any[];
 
+  p:number=1;
+  p2:number=1;
+  p3:number=1;
+
   constructor(
     private materialesService: MaterialesService,
     public dialog: MatDialog,

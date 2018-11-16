@@ -1,3 +1,64 @@
-<p>
-  salidas-list works!
-</p>
+<h3 class="mt-5">Administrador de salidas</h3>
+<hr>
+
+<div class="card mt-5">
+
+  <div class="card-header">
+    <div class="row">
+      <div class="col-2">
+        <p class="ml-3 m-0">Sede</p>
+      </div>
+
+      <div class="col-2">
+        <p class="m-0">Cliente</p>
+      </div>
+
+      <div class="col-2">
+        <p class="m-0">Tipo de entrega</p>
+      </div>
+
+      <div class="col">
+        <button class="btn btn-info float-right" routerLink="create">Añadir</button>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="card-body">
+
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item" *ngFor="let salida of salidasService.salidas 
+      | paginate: { itemsPerPage: 5, currentPage: p, id: 'first'}">
+        <div class="row">
+          <div class="col-2">
+            <p>{{salida.sede}}</p>
+          </div>
+
+          <div class="col-2">
+            <p class="m-0">{{salida.cliente}}</p>
+          </div>
+
+          <div class="col-2">
+            <p class="m-0">{{salida.tipo_entrega}}</p>
+          </div>
+
+          <!--
+          <div class="col">
+            <a class="float-right ml-4 text-danger" (click)="deletesalida(salida.id)" 
+            style="cursor:pointer;" matTooltip="Borrar Salida">
+              <i class="far fa-trash-alt"></i>
+            </a>
+          </div>
+          -->
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="card-footer text-center">
+    <pagination-controls (pageChange)="p = $event" id="first"
+    previousLabel="Anterior"
+    nextLabel="Siguiente"></pagination-controls>
+  </div>
+
+</div>

@@ -21,10 +21,6 @@
         <p class="m-0">Monto credito</p>
       </div>
 
-      <div class="col">
-        <button class="btn btn-info float-right" routerLink="crear">Añadir</button>
-      </div>
-
     </div>
   </div>
 
@@ -35,19 +31,19 @@
       | paginate: { itemsPerPage: 5, currentPage: p, id: 'first'}">
         <div class="row">
           <div class="col-2">
-            <p>{{venta.publicacion.titulo}}</p>
+            <p>{{venta.bauche}}</p>
           </div>
 
           <div class="col-2">
-            <p class="m-0">{{venta.cantidad}}</p>
+            <p class="m-0">{{venta.banco}}</p>
           </div>
 
           <div class="col-2">
-            <p class="m-0">{{venta.tipo_entrega}}</p>
+            <p class="m-0">{{venta.monto_debito}}</p>
           </div>
 
           <div class="col-2">
-            <p class="m-0">{{venta.tipo_cantidad}}</p>
+            <p class="m-0">{{venta.monto_credito}}</p>
           </div>
 
           <div class="col">

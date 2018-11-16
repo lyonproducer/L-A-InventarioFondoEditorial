@@ -38,6 +38,7 @@ import { PublicacionesViewComponent } from './components/publicaciones-module/pu
 import { SalidasListComponent } from './components/publicaciones-module/salidas/salidas-list/salidas-list.component';
 import { VentasListComponent } from './components/publicaciones-module/ventas/ventas-list/ventas-list.component';
 import { StocksFormComponent } from './components/publicaciones-module/stocks/stocks-form/stocks-form.component';
+import { SalidasFormComponent } from './components/publicaciones-module/salidas/salidas-form/salidas-form.component';
 
 const routes: Route[] = [
   
@@ -57,6 +58,7 @@ const routes: Route[] = [
       {path: 'publicaciones/crear', component: PublicacionesFormComponent},
       {path: 'stocks', component: StocksListComponent},
       {path: 'salidas', component: SalidasListComponent},
+      {path: 'salidas/create', component: SalidasFormComponent},
       {path: 'ventas', component: VentasListComponent}
     ] 
   },
@@ -96,6 +98,7 @@ const routes: Route[] = [
     SalidasListComponent,
     VentasListComponent,
     StocksFormComponent,
+    SalidasFormComponent,
     
   ],
   imports: [

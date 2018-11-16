@@ -21,8 +21,8 @@ export class PublicacionesFormComponent implements OnInit {
     origen:null,
     tipo_publicacion:'Seleccionar',
     categoria:null,
-    cantidad_impresa:0,
-    cantidad_cd:0,
+    cantidad_impresa:null,
+    cantidad_cd:null,
     url_digital:null,
     isbn:null,
     costo_unitario:null,
@@ -77,6 +77,14 @@ export class PublicacionesFormComponent implements OnInit {
         this.snotify.error('Es necesario ingresar toda la informacion de la revista', {timeout:0});
         return
       }
+    }
+
+    if(!this.publicacion.cantidad_impresa){
+      this.publicacion.cantidad_impresa = 0;
+    }
+
+    if(!this.publicacion.cantidad_cd){
+      this.publicacion.cantidad_cd = 0;
     }
 
     this.publicacionesService.postPublicacion(this.publicacion).subscribe(

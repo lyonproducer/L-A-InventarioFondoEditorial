@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
+  templateUrl: './test.component.html',
   selector: 'app-variables',
 })
 export class VariablesComponent implements OnInit {
