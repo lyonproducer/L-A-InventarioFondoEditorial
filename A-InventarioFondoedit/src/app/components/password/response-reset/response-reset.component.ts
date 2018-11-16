@@ -10,7 +10,7 @@ import { LoginService } from 'src/app/services/auth/login.service';
 })
 export class ResponseResetComponent implements OnInit {
 
-  public error = [];
+  public error:any = [];
 
   public form = {
     email:null,

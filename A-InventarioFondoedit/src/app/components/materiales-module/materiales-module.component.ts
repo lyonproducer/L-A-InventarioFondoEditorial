@@ -26,10 +26,10 @@ export class MaterialesModuleComponent implements OnInit {
   p3:number=1;
 
   constructor(
-    private materialesService: MaterialesService,
+    public materialesService: MaterialesService,
     public dialog: MatDialog,
-    private entradasService:EntradasService,
-    private entregasService:EntregasService
+    public entradasService:EntradasService,
+    public entregasService:EntregasService
   ) { }
 
   ngOnInit() {

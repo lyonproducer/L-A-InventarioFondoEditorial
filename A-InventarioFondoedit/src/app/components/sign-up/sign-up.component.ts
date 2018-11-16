@@ -18,7 +18,7 @@ export class SignUpComponent implements OnInit {
     password_confirmation:null
   };
   
-  public error = [];
+  public error:any = [];
 
   constructor(private loginService:LoginService,
               private token: TokenService,

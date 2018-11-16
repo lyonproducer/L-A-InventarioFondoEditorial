@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
     password:null
   };
 
-  public error = null;
+  public error:any = null;
 
   constructor(private loginService:LoginService,
               private token: TokenService,

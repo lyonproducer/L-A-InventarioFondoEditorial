@@ -18,7 +18,7 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { RequestResetComponent } from './components/password/request-reset/request-reset.component';
 import { ResponseResetComponent } from './components/password/response-reset/response-reset.component';
 import { ProfileComponent } from './components/profile/profile.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BeforeLoginService } from './services/auth/before-login.service';
 import { AfterLoginService } from './services/auth/after-login.service';
 
@@ -39,6 +39,7 @@ import { SalidasListComponent } from './components/publicaciones-module/salidas/
 import { VentasListComponent } from './components/publicaciones-module/ventas/ventas-list/ventas-list.component';
 import { StocksFormComponent } from './components/publicaciones-module/stocks/stocks-form/stocks-form.component';
 import { SalidasFormComponent } from './components/publicaciones-module/salidas/salidas-form/salidas-form.component';
+import { TokenInterceptor } from './security/token.interceptor';
 
 const routes: Route[] = [
   
@@ -117,7 +118,12 @@ const routes: Route[] = [
   providers: [
     { provide: 'SnotifyToastConfig', useValue: ToastDefaults},
     SnotifyService,
-    VariablesComponent
+    VariablesComponent,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })
