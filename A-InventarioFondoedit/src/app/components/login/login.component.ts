@@ -38,11 +38,18 @@ export class LoginComponent implements OnInit {
   handleResponse(data){
     this.token.handle(data.access_token);
     this.auth.changeAuthStatus(true);
+    this.handleUser(data.user);
     this.router.navigateByUrl('/profile'); 
   }
 
   handleError(error){
     this.error = error.error.error;
 
+  }
+
+  handleUser(user){
+
+    let data:any = JSON.stringify(user);
+    localStorage.setItem('userFondoedit',data);
   }
 }

@@ -40,9 +40,11 @@ import { VentasListComponent } from './components/publicaciones-module/ventas/ve
 import { StocksFormComponent } from './components/publicaciones-module/stocks/stocks-form/stocks-form.component';
 import { SalidasFormComponent } from './components/publicaciones-module/salidas/salidas-form/salidas-form.component';
 import { TokenInterceptor } from './security/token.interceptor';
+import { HomeComponent } from './components/home/home.component';
 
 const routes: Route[] = [
   
+  {path: '', component: HomeComponent},
   {path: 'login', component: LoginComponent, canActivate:[BeforeLoginService] },
   {path: 'signup', component: SignUpComponent, canActivate:[BeforeLoginService]},
   {path: 'profile', component: ProfileComponent, canActivate:[AfterLoginService]},
@@ -100,6 +102,7 @@ const routes: Route[] = [
     VentasListComponent,
     StocksFormComponent,
     SalidasFormComponent,
+    HomeComponent,
     
   ],
   imports: [
