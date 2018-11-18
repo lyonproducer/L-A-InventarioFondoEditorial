@@ -19,7 +19,7 @@ class CreatePublicacionesTable extends Migration
             $table->string('tema',128);
             $table->string('titulo',128);
             $table->string('fecha_elaboracion');
-            $table->string('descripcion')->nullable();
+            $table->text('descripcion')->nullable();
             $table->string('departamento');
             $table->string('origen'); 
             $table->enum('tipo_publicacion', ['Revista', 'Libro']);
@@ -37,7 +37,7 @@ class CreatePublicacionesTable extends Migration
             $table->string('volumen')->nullable();
             $table->string('periodo')->nullable();
             $table->string('numero_edicion')->nullable();
-            $table->string('autor')->nullable();
+            $table->text('autor')->nullable();
             
 
             $table->timestamps();
