@@ -99,6 +99,7 @@ const routes: Route[] = [
     VentasListComponent,
     StocksFormComponent,
     SalidasFormComponent,
+    VariablesComponent
     
   ],
   imports: [
