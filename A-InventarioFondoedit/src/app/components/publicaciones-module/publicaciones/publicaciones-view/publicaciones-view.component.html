@@ -24,12 +24,20 @@
 
   </div>
 
-  <div class="row">
+  <hr>
+
+  <div class="row" *ngIf="data.descripcion">
 
     <div class="col">
       <strong>Descripción: </strong>
       <p>{{data.descripcion}}</p>
     </div>
+
+  </div>
+
+  <hr>
+
+  <div class="row">
 
     <div class="col">
       <strong>Tipo de publicación:</strong>
@@ -83,7 +91,7 @@
     </div>
 
     <div class="col" *ngIf="data.url_digital">
-      <strong>Link digital:</strong>
+      <strong>Link digital:</strong><br>
       <a href="{{data.url_digital}}">{{data.url_digital}}</a>
     </div>
 

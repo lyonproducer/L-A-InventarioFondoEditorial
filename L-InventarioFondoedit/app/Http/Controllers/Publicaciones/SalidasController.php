@@ -78,6 +78,13 @@ class SalidasController extends Controller
             $venta->salida_id       = $salida->id;
             $venta->save();
             
+            return response()->json(
+                [
+                    'info'=> 'Salida añadida correctamente',
+                    'salida'=>$salida,
+                    'venta'=>$venta
+                ]
+            );
             //return $venta;
             //dd($venta);
         }
@@ -85,8 +92,7 @@ class SalidasController extends Controller
         return response()->json(
             [
                 'info'=> 'Salida añadida correctamente',
-                'salida'=>$salida,
-                'venta'=>$venta
+                'salida'=>$salida
             ]
         );
     }

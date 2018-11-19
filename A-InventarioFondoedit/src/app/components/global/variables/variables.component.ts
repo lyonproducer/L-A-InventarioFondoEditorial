@@ -14,4 +14,7 @@ export class VariablesComponent implements OnInit {
   public baseApi:string = 'http://localhost:8000/api';
   public baseURL:string = 'http://localhost:8000';
 
+  //public baseApi:string = 'back/api';
+  //public baseURL:string = 'back';
+
 }

@@ -9,16 +9,20 @@
         <p class="ml-3 m-0">Título</p>
       </div>
 
-      <div class="col-2">
-        <p class="m-0">Cantidad</p>
+      <div class="col-1">
+        <p class="m-0">Cant.</p>
       </div>
 
       <div class="col-2">
-        <p class="m-0">Tipo de entrada</p>
+        <p class="m-0">Tipo</p>
       </div>
 
       <div class="col-2">
         <p class="m-0">Producto</p>
+      </div>
+
+      <div class="col-1">
+        <p class="m-0">Fecha</p>
       </div>
 
       <div class="col">
@@ -38,7 +42,7 @@
             <p>{{stock.publicacion.titulo}}</p>
           </div>
 
-          <div class="col-2">
+          <div class="col-1">
             <p class="m-0">{{stock.cantidad}}</p>
           </div>
 
@@ -48,6 +52,10 @@
 
           <div class="col-2">
             <p class="m-0">{{stock.tipo_cantidad}}</p>
+          </div>
+
+          <div class="col-2">
+            <p class="m-0">{{stock.created_at}}</p>
           </div>
 
           <div class="col">
