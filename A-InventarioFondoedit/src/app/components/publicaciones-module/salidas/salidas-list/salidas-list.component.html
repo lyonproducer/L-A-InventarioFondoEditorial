@@ -17,6 +17,10 @@
         <p class="m-0">Tipo de entrega</p>
       </div>
 
+      <div class="col-2">
+        <p class="m-0">Fecha</p>
+      </div>
+
       <div class="col">
         <button class="btn btn-info float-right" routerLink="create">Añadir</button>
       </div>
@@ -40,6 +44,10 @@
 
           <div class="col-2">
             <p class="m-0">{{salida.tipo_entrega}}</p>
+          </div>
+
+          <div class="col-2">
+            <p class="m-0">{{salida.created_at}}</p>
           </div>
 
           <!--

@@ -18,7 +18,7 @@ class CreateMaterialesTable extends Migration
 
             $table->string('codigo',128);
             $table->string('nombre',128);
-            $table->string('descripcion')->nullable();
+            $table->text('descripcion')->nullable();
             $table->integer('cantidad');
             $table->integer('precio'); 
 

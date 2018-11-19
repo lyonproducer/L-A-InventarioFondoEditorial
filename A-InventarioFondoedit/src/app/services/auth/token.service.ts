@@ -29,6 +29,7 @@ export class TokenService {
 
   remove(){
     localStorage.removeItem('token');
+    localStorage.removeItem('userFondoedit');
   }
 
   isValid(){

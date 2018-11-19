@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
+  user:any;
+  
   constructor() { }
 
   ngOnInit() {
+    this.user = JSON.parse(localStorage.getItem('userFondoedit'));
+
+    console.log(this.user);
   }
 
 }

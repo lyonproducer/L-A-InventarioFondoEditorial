@@ -34,15 +34,15 @@ Route::group([
     Route::post('resetPassword','ChangePasswordController@process');
 
     //Rubros
-    Route::resource('rubros',   'Materiales\RubrosController');
-    Route::resource('materiales',   'Materiales\MaterialesController');
-    Route::resource('entradas',   'Materiales\EntradasController');
-    Route::resource('entregas',   'Materiales\EntregasController');
+    Route::resource('rubros',   'Materiales\RubrosController')->middleware('jwt.verify');;
+    Route::resource('materiales',   'Materiales\MaterialesController')->middleware('jwt.verify');;
+    Route::resource('entradas',   'Materiales\EntradasController')->middleware('jwt.verify');;
+    Route::resource('entregas',   'Materiales\EntregasController')->middleware('jwt.verify');;
 
     //Publicaciones
-    Route::resource('publicaciones',   'Publicaciones\PublicacionesController');
-    Route::resource('stocks',   'Publicaciones\StocksController');
-    Route::resource('salidas',   'Publicaciones\SalidasController');
-    Route::resource('ventas',   'Publicaciones\VentasController');
+    Route::resource('publicaciones',   'Publicaciones\PublicacionesController')->middleware('jwt.verify');
+    Route::resource('stocks',   'Publicaciones\StocksController')->middleware('jwt.verify');
+    Route::resource('salidas',   'Publicaciones\SalidasController')->middleware('jwt.verify');
+    Route::resource('ventas',   'Publicaciones\VentasController')->middleware('jwt.verify');
 
 });

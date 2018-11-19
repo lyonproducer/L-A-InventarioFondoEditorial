@@ -37,7 +37,7 @@ class CreatePublicacionesTable extends Migration
             $table->string('volumen')->nullable();
             $table->string('periodo')->nullable();
             $table->string('numero_edicion')->nullable();
-            $table->string('autor')->nullable();
+            $table->text('autor')->nullable();
             
 
             $table->timestamps();
