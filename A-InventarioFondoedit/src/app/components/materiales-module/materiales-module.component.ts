@@ -127,4 +127,10 @@ export class MaterialesModuleComponent implements OnInit {
       console.log('The Material dialog was closed');
     });
   }
+
+  editarentrada(data){
+    this.entradasService.entradaselected = data;
+    this.entradasService.editar=true;
+    
+  }
 }

@@ -27,6 +27,9 @@ export class EntradasFormComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    if(this.entradasService.editar==true){
+      this.entrada = this.entradasService.entradaselected;
+    }
   }
 
   closeDialog(): void {
