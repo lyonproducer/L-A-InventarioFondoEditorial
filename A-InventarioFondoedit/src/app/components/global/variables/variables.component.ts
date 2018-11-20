@@ -14,10 +14,10 @@ export class VariablesComponent implements OnInit {
   //public baseApi:string = 'http://localhost:8000/api';
   //public baseURL:string = 'http://localhost:8000';
 
-  //public baseApi:string = 'backInventario/api';
-  //public baseURL:string = 'backInventario';
+  public baseApi:string = 'back/api';
+  public baseURL:string = 'back';
 
-  public baseApi:string = 'https://inventario-fondoedit.herokuapp.com/api';
-  public baseURL:string = 'https://inventario-fondoedit.herokuapp.com/';
+  //public baseApi:string = 'http://inventario-fondoedit.herokuapp.com/api';
+  //public baseURL:string = 'http://inventario-fondoedit.herokuapp.com/';
   
 }

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { decode } from '@angular/router/src/url_tree';
+import { VariablesComponent } from '../../components/global/variables/variables.component';
 
 @Injectable({
   providedIn: 'root'
@@ -8,11 +9,18 @@ export class TokenService {
 
   private iss = {
 
-    login : 'http://localhost:8000/api/login',
-    signup : 'http://localhost:8000/api/signup'
+    //login : 'http://localhost:8000/api/login',
+    //signup : 'http://localhost:8000/api/signup'
+
+    //login : 'http://inventario-fondoedit.herokuapp.com/api/login',
+    //signup : 'http://inventario-fondoedit.herokuapp.com/api/signup'
+
+    login : this.variable.baseApi + '/login',
+    signup : this.variable.baseApi + '/signup'
+    
   };
 
-  constructor() { }
+  constructor(public variable:VariablesComponent) { }
 
   handle(token){
     this.set(token);
@@ -37,10 +45,13 @@ export class TokenService {
     let token = this.get();
 
     if(token){
+      return true;
+      /*
       const payload = this.payload(token);
       if(payload){
         return Object.values(this.iss).indexOf(payload.iss) > -1 ? true : false;
       }
+      */
     }
 
     return false;
