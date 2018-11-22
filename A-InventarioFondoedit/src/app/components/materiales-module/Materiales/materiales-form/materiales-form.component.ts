@@ -5,6 +5,7 @@ import { RubrosService } from 'src/app/services/admin/rubros.service';
 import { Rubro } from 'src/app/Models/Rubro';
 import { MaterialesService } from 'src/app/services/admin/materiales.service';
 import { NgForm } from '@angular/forms';
+import { SnotifyService } from 'ng-snotify';
 
 @Component({
   selector: 'app-materiales-form',
@@ -32,7 +33,8 @@ export class MaterialesFormComponent implements OnInit {
     public dialogRef: MatDialogRef<MaterialesFormComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private rubrosService:RubrosService,
-    private materialesService:MaterialesService
+    private materialesService:MaterialesService,
+    public snotify:SnotifyService
   ) { }
 
   ngOnInit() {
@@ -72,10 +74,11 @@ export class MaterialesFormComponent implements OnInit {
         console.log(data);
         this.loading=false;
         this.updateMaterialesList();
+        this.snotify.success('Material agregado con exito');
         this.closeDialog();
       },
       error=>{
-
+        this.snotify.error('Hubo un error, contacte con el desarrollador');
       }
     );
   }

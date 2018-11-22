@@ -7,6 +7,7 @@ import { Venta } from 'src/app/Models/Venta';
 import { Publicacion } from 'src/app/Models/Publicacion';
 import { VentasService } from 'src/app/services/admin/ventas.service';
 import { Router } from '@angular/router';
+import { SnotifyService } from 'ng-snotify';
 
 @Component({
   selector: 'app-salidas-form',
@@ -30,11 +31,13 @@ export class SalidasFormComponent implements OnInit {
 
   publicaciones:any = {
     publicacion_id:null,
+    //titulo:null,
     cantidad:null,
     tipo_cantidad:null
   }
 
   publicacion:any = {
+    //titulo:null,
     publicacion_id:null,
     cantidad:null,
     tipo_cantidad:null
@@ -47,11 +50,16 @@ export class SalidasFormComponent implements OnInit {
     monto_credito:null
   }
 
+  titulos:any=[];
+
+  tit:string;
+
   constructor(    
     public publicacionesService:PublicacionesService,
     public salidasService:SalidasService,
     public ventasService:VentasService,
-    public router:Router
+    public router:Router,
+    public snotify:SnotifyService
   ) { }
 
   ngOnInit(){
@@ -91,11 +99,15 @@ export class SalidasFormComponent implements OnInit {
     //console.log(event);
     for (let i =0 ; i < this.publicacionesService.publicaciones.length;i++){
       if (this.publicacionesService.publicaciones[i].titulo == event){
+
         this.publicacion.publicacion_id = this.publicacionesService.publicaciones[i].id;
-        console.log(this.publicacion.publicacion_id);
+        this.tit = this.publicacionesService.publicaciones[i].titulo;
+        //this.publicacion.titulo = this.publicacionesService.publicaciones[i].titulo;
 
         this.pub = this.publicacionesService.publicaciones[i]; 
         console.log(this.pub);
+        console.log(this.publicacion);
+        //this.publicaciones.length
 
         if(this.publicacion.tipo_cantidad == 'CD'){
           this.maxCantidad = this.publicacionesService.publicaciones[i].cantidad_cd;
@@ -117,9 +129,10 @@ export class SalidasFormComponent implements OnInit {
   }
 
   addPublicacion(){
-    console.log(this.publicacion);
+    //console.log(this.publicacion);
     this.publicaciones.push(this.publicacion);
-
+    this.titulos.push(this.tit);
+    //console.log(this.titulos);
     this.publicacion = {
       publicacion_id:null,
       cantidad:null,
@@ -128,9 +141,18 @@ export class SalidasFormComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log('publicaciones',this.publicaciones);
-    console.log('venta',this.venta);
-    console.log('salida',this.salida);
+    //console.log('publicaciones',this.publicaciones);
+    //console.log('venta',this.venta);
+    //console.log('salida',this.salida);
+
+    if(this.salida.tipo_entrega == 'Venta'){
+      //console.log('venta');
+
+      if(this.venta.banco == null || this.venta.bauche == null  || this.venta.monto_credito == null  || this.venta.monto_debito==null){
+        this.snotify.error('Ingrese todos los campos de venta');
+        return;
+      }
+    }
 
     var data = {
       sede:this.salida.sede,
