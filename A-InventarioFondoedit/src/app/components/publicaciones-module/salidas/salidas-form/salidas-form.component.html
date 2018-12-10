@@ -28,7 +28,7 @@
       <div class="col">
         <div class="form-group">
           <div class="form-group">
-            <label for="exampleFormControlSelect1">Selecciona la publicacion</label>
+            <label for="exampleFormControlSelect1">Selecciona la publicación</label>
             <select class="form-control" id="exampleFormControlSelect1" (change)="asignPulicacionID($event.target.value)">
               <option selected="true" disabled="disabled">Seleccionar</option>
               <option *ngFor="let publicacion of publicacionesService.publicaciones">

@@ -41,6 +41,7 @@ import { StocksFormComponent } from './components/publicaciones-module/stocks/st
 import { SalidasFormComponent } from './components/publicaciones-module/salidas/salidas-form/salidas-form.component';
 import { TokenInterceptor } from './security/token.interceptor';
 import { HomeComponent } from './components/home/home.component';
+import { ReportesComponent } from './components/publicaciones-module/reportes/reportes.component';
 
 const routes: Route[] = [
   
@@ -76,7 +77,8 @@ const routes: Route[] = [
     EntregasFormComponent,
     EntregasViewComponent,
     PublicacionesViewComponent,
-    StocksFormComponent
+    StocksFormComponent,
+    ReportesComponent
   ],
   declarations: [
     AppComponent,
@@ -103,7 +105,7 @@ const routes: Route[] = [
     StocksFormComponent,
     SalidasFormComponent,
     HomeComponent,
-    
+    ReportesComponent
   ],
   imports: [
     BrowserModule,

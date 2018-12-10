@@ -16,6 +16,10 @@ export class StocksService {
     return this.http.get(this.variables.baseApi + '/stocks');
   }
 
+  getStocksReporte(){
+    return this.http.get(this.variables.baseApi + '/stocksReporte');
+  }
+
   postStock(data){
     return this.http.post(this.variables.baseApi + '/stocks',data);
   }

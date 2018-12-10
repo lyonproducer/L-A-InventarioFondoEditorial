@@ -45,4 +45,7 @@ Route::group([
     Route::resource('salidas',   'Publicaciones\SalidasController')->middleware('jwt.verify');
     Route::resource('ventas',   'Publicaciones\VentasController')->middleware('jwt.verify');
 
+
+    Route::get('stocksReporte', 'Publicaciones\StocksController@indexReporte')->middleware('jwt.verify');
+
 });

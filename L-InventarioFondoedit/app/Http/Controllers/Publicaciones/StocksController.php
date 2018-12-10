@@ -21,6 +21,17 @@ class StocksController extends Controller
         return response()->json($stocks);
     }
 
+    public function indexReporte()
+    {
+        //$stocks = Stock::All();
+        $stocks=Stock::with('publicacion')->get();
+
+        foreach($stocks as $stock){
+            $stock['titulo']=$stock->publicacion->titulo; 
+        }
+        return response()->json($stocks);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
