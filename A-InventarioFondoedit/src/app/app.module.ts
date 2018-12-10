@@ -105,7 +105,9 @@ const routes: Route[] = [
     StocksFormComponent,
     SalidasFormComponent,
     HomeComponent,
-    ReportesComponent
+    ReportesComponent,
+    VariablesComponent
+    
   ],
   imports: [
     BrowserModule,

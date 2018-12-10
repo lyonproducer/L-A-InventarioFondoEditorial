@@ -12,7 +12,7 @@ export class LoginService {
   constructor(private http:HttpClient, private variables: VariablesComponent) {  }
 
   public signup (data){
-    return this.http.post('http://localhost:8000/api/signup',data);
+    return this.http.post(this.variables.baseApi + '/signup',data);
   }
   
   public login (data){
@@ -20,10 +20,10 @@ export class LoginService {
   }
 
   public sendPaswordReset(data){
-    return this.http.post('http://localhost:8000/api/sendPasswordResetLink',data);
+    return this.http.post(this.variables.baseApi + '/api/sendPasswordResetLink',data);
   }
 
   public changePassword(data){
-    return this.http.post(`${this.baseURL}/resetPassword`,data);
+    return this.http.post(`${this.variables.baseApi}/resetPassword`,data);
   }
 }

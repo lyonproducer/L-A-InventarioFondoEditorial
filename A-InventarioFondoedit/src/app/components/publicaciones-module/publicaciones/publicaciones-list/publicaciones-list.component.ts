@@ -38,7 +38,7 @@ export class PublicacionesListComponent implements OnInit {
     this.publicacionesService.deletePublicacion(id).subscribe(
       data => {
         console.log(data);
-        this.snotify.success('Publicacion eliminada', {timeout:0});
+        this.snotify.success('Publicacion eliminada');
         this.updatePublicacionesList();
       }
     );

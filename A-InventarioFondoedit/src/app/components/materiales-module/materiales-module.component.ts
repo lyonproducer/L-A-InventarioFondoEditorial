@@ -11,6 +11,7 @@ import { EntradasFormComponent } from './Entradas/entradas-form/entradas-form.co
 import { Entrega } from 'src/app/Models/Entrega';
 import { EntregasFormComponent } from './Entregas/entregas-form/entregas-form.component';
 import { EntregasViewComponent } from './Entregas/entregas-view/entregas-view.component';
+import { SnotifyService } from 'ng-snotify';
 
 @Component({
   selector: 'app-materiales-module',
@@ -29,7 +30,8 @@ export class MaterialesModuleComponent implements OnInit {
     public materialesService: MaterialesService,
     public dialog: MatDialog,
     public entradasService:EntradasService,
-    public entregasService:EntregasService
+    public entregasService:EntregasService,
+    public snotify:SnotifyService
   ) { }
 
   ngOnInit() {
@@ -56,18 +58,19 @@ export class MaterialesModuleComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The Material dialog was closed');
+      //console.log('The Material dialog was closed');
     });
   }
 
   deleteMaterial(id:number){
     this.materialesService.deleteMaterial(id).subscribe(
       data =>{
-        console.log(data);
+        ////console.log(data);
         this.updateMaterialesList();
+        this.snotify.success('Eliminado con exito');
       },
       error=>{
-
+        this.snotify.error('Hubo un error, contacte con el desarrollador');
       }
     );
   }
@@ -88,7 +91,7 @@ export class MaterialesModuleComponent implements OnInit {
       res=>{
 
         this.entradasService.entradas = res as Entrada[];
-        console.log("dentro response entradas",this.entradasService.entradas);
+        //console.log("dentro response entradas",this.entradasService.entradas);
       }
     );
   }
@@ -106,7 +109,7 @@ export class MaterialesModuleComponent implements OnInit {
     this.entregasService.getEntregas().subscribe(
       res=>{
         this.entregasService.entregas = res as Entrega[];
-        console.log("dentro response entregas",this.entregasService.entregas);
+        //console.log("dentro response entregas",this.entregasService.entregas);
       }
     );
   }
@@ -124,7 +127,13 @@ export class MaterialesModuleComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The Material dialog was closed');
+      //console.log('The Material dialog was closed');
     });
+  }
+
+  editarentrada(data){
+    this.entradasService.entradaselected = data;
+    this.entradasService.editar=true;
+    
   }
 }

@@ -4,6 +4,7 @@ import { MaterialesService } from 'src/app/services/admin/materiales.service';
 import { Entrada } from 'src/app/Models/Entrada';
 import { EntradasService } from 'src/app/services/admin/entradas.service';
 import { Material } from 'src/app/Models/Material';
+import { SnotifyService } from 'ng-snotify';
 
 @Component({
   selector: 'app-entradas-form',
@@ -24,9 +25,13 @@ export class EntradasFormComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any,
     private materialesService:MaterialesService,
     private entradasService:EntradasService,
+    public snotify:SnotifyService
   ) { }
 
   ngOnInit() {
+    if(this.entradasService.editar==true){
+      this.entrada = this.entradasService.entradaselected;
+    }
   }
 
   closeDialog(): void {
@@ -49,11 +54,15 @@ export class EntradasFormComponent implements OnInit {
     console.log(this.entrada);
     this.entradasService.postEntrada(this.entrada).subscribe(
       data=>{
-        console.log(data);
+        //console.log(data);
         this.updateEntradasList();
         this.updateMaterialesList();
         this.loading=false;
+        this.snotify.success('Guardado entrada con exito');
         this.closeDialog();
+      },
+      error=>{
+        this.snotify.error('Hubo un error, contacte con el desarrollador');
       }
     );
   }
@@ -63,7 +72,7 @@ export class EntradasFormComponent implements OnInit {
       res=>{
 
         this.entradasService.entradas = res as Entrada[];
-        console.log("dentro response",this.entradasService.entradas);
+        //console.log("dentro response",this.entradasService.entradas);
       }
     );
   }

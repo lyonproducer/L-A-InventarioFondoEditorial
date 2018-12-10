@@ -1,7 +1,7 @@
 <h3 class="mt-5">Añadir nueva publicación</h3>
 <hr>
 
-<form #publicacionForm="ngForm" (ngSubmit)="onSubmit(publicacionForm)">
+<form #publicacionForm="ngForm" (ngSubmit)="onSubmit(publicacionForm)" *ngIf="!loading" >
 
   <div class="row">
 
@@ -214,3 +214,5 @@
 
   </div>
 </form>
+
+<mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>

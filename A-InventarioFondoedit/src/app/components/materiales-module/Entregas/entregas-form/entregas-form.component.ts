@@ -5,6 +5,7 @@ import { EntregasService } from 'src/app/services/admin/entregas.service';
 import { Entrega } from 'src/app/Models/Entrega';
 import { Material } from 'src/app/Models/Material';
 import { NgForm } from '@angular/forms';
+import { SnotifyService } from 'ng-snotify';
 
 @Component({
   selector: 'app-entregas-form',
@@ -31,7 +32,8 @@ export class EntregasFormComponent implements OnInit {
     public dialogRef: MatDialogRef<EntregasFormComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private materialesService:MaterialesService,
-    private entregasService:EntregasService
+    private entregasService:EntregasService,
+    public snotify:SnotifyService
     ) { }
 
   ngOnInit() {
@@ -42,12 +44,12 @@ export class EntregasFormComponent implements OnInit {
   }
 
   asignEntregaID(event){
-    console.log(event);
+    //console.log(event);
     for (let i =0 ; i < this.materialesService.materiales.length;i++){
       if (this.materialesService.materiales[i].nombre == event){
         this.entrega.material_id = this.materialesService.materiales[i].id;
         this.maxCantidad = this.materialesService.materiales[i].cantidad;
-        console.log(this.maxCantidad);
+        //console.log(this.maxCantidad);
         return i;
       }
     }
@@ -56,18 +58,22 @@ export class EntregasFormComponent implements OnInit {
   onSubmit(form:NgForm){
 
     this.entrega.unidad_diseño = form.value.unidad_diseño;
-    console.log(this.entrega);
+    //console.log(this.entrega);
 
     if(this.entrega.cantidad<=this.maxCantidad){
       this.loading=true;
 
       this.entregasService.postEntrega(this.entrega).subscribe(
         data=>{
-          console.log(data);
+          //console.log(data);
           this.updateEntregasList();
           this.updateMaterialesList();
           this.loading=false;
+          this.snotify.success('Guardado entrega con exito');
           this.closeDialog();
+        },
+        error=>{
+          this.snotify.error('Hubo un error, contacte con el desarrollador');
         }
       );
     }
@@ -78,7 +84,7 @@ export class EntregasFormComponent implements OnInit {
     this.entregasService.getEntregas().subscribe(
       res=>{
         this.entregasService.entregas = res as Entrega[];
-        console.log("dentro response",this.entregasService.entregas);
+        //console.log("dentro response",this.entregasService.entregas);
       }
     );
   }

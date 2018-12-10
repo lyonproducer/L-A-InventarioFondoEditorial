@@ -12,6 +12,8 @@ import { Router } from '@angular/router';
 })
 export class PublicacionesFormComponent implements OnInit {
 
+  loading:boolean=false;
+
   publicacion:Publicacion = {
     tema:null, 
     titulo:null, 
@@ -87,12 +89,14 @@ export class PublicacionesFormComponent implements OnInit {
       this.publicacion.cantidad_cd = 0;
     }
 
+    this.loading = true;
     this.publicacionesService.postPublicacion(this.publicacion).subscribe(
       data =>{
         console.log(data);
         this.updatePublicacionesList();
-        this.router.navigateByUrl('publicacionesModule/publicaciones');
+        this.loading = false;
         this.manageResponse(data);
+        this.router.navigateByUrl('publicacionesModule/publicaciones');
       },
       error=>{
         console.log(error);
@@ -102,7 +106,7 @@ export class PublicacionesFormComponent implements OnInit {
   }
 
   manageResponse(data){
-    this.snotify.success(data.info,{timeout:0});
+    this.snotify.success(data.info);
   }
 
   updatePublicacionesList(){

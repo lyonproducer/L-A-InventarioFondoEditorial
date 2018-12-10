@@ -79,8 +79,11 @@ export class StocksFormComponent implements OnInit {
         this.updatePublicacionesList();
         this.updateStockList();
         this.loading = false;
-        this.snotify.success('agregado con exito',{timeout:0});
+        this.snotify.success('agregado con exito');
         this.closeDialog();
+      },
+      error=>{
+        this.snotify.error('error');
       }
     );
   }

@@ -10,6 +10,9 @@ export class EntradasService {
 
   entradas:Entrada[];
 
+  editar:boolean=false;
+  entradaselected:Entrada;
+
   constructor(private http: HttpClient, private variables:VariablesComponent) { }
 
   getEntradas(){

@@ -60,7 +60,7 @@ class Kernel extends HttpKernel
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-        'CORS' => \App\Http\Middleware\CORS::class,
-        'jwt.verify' => \App\Http\Middleware\jwtMiddleware::class,
+        //'CORS' => \App\Http\Middleware\CORS::class,
+        //'jwt.verify' => \App\Http\Middleware\jwtMiddleware::class,
     ];
 }
