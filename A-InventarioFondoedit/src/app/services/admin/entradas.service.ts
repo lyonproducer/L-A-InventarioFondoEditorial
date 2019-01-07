@@ -19,8 +19,8 @@ export class EntradasService {
     return this.http.get(this.variables.baseApi + '/entradas');
   }
 
-  getEntradasReporte(){
-    return this.http.get(this.variables.baseApi + '/materialesEntradasReporte');
+  getEntradasReporte(data){
+    return this.http.post(this.variables.baseApi + '/materialesEntradasReporte',data);
   }
 
   postEntrada(data){

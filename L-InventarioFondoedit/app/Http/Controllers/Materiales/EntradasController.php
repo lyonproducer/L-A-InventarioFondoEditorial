@@ -23,9 +23,13 @@ class EntradasController extends Controller
         return response()->json($entradas);
     }
 
-    public function indexReporte()
+    public function indexReporte(Request $request)
     {
-        $entradas=Entrada::with('material')->get();
+        //$entradas=Entrada::with('material')->get();
+
+        $entradas=Entrada::whereBetween('created_at', array($request->from,$request->to))
+                        ->with('material')
+                        ->get();
 
         foreach($entradas as $entrada){
             $entrada['nombre']=$entrada->material->nombre;

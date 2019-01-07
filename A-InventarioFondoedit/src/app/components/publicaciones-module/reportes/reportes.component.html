@@ -18,21 +18,25 @@
       </select>
     </div>
 
-    <!--
+    
     <label for="inicio">Fecha inicio</label><br>
     <input type="date" required name="inicio" id="inicio"
-    #name="ngModel" [(ngModel)]="inicio">
+    #name="ngModel" [(ngModel)]="fecha.from">
     <br>
     <br>
 
     <label for="fin">Fecha fin</label><br>
     <input type="date" required name="fin" id="fin"
-    #name="ngModel" [(ngModel)]="fin">
+    #name="ngModel" [(ngModel)]="fecha.to">
     <br>
     <br>
-    -->
+    
+    <div class="row">
+      <div class="col text-center">
+        <button class="btn btn-primary text-center" [disabled]='!reportesForm.valid' (click)="generarPDF()">Generar</button>
+      </div>
+    </div>
 
-    <button class="btn btn-primary text-center" [disabled]='!reportesForm.valid' (click)="generarPDF()">Generar</button>
   </form>
  
 </mat-dialog-content>

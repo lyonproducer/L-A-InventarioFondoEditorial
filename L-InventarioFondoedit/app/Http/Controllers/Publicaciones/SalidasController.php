@@ -22,9 +22,10 @@ class SalidasController extends Controller
         return response()->json($salidas);
     }
 
-    public function indexReporte()
+    public function indexReporte(Request $request)
     {
-        $salidas=Salida::with('publicaciones')->get();
+        $salidas=Salida::whereBetween('created_at', array($request->from,$request->to))
+        ->with('publicaciones')->get();
 
         foreach($salidas as $salida){
             $salida['cantidad']=count($salida->publicaciones);

@@ -20,9 +20,10 @@ class EntregasController extends Controller
         return response()->json($entregas);
     }
 
-    public function indexReporte()
+    public function indexReporte(Request $request)
     {
-        $entregas=Entrega::with('material')->get();
+        $entregas=Entrega::whereBetween('created_at', array($request->from,$request->to))
+                        ->with('material')->get();
 
         foreach($entregas as $entrega){
             $entrega['nombre']=$entrega->material->nombre;

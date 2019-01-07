@@ -16,8 +16,8 @@ export class SalidasService {
     return this.http.get(this.variables.baseApi + '/salidas');
   }
 
-  getSalidasReporte(){
-    return this.http.get(this.variables.baseApi + '/salidasReporte');
+  getSalidasReporte(data){
+    return this.http.post(this.variables.baseApi + '/salidasReporte',data);
   }
 
   postSalida(data){

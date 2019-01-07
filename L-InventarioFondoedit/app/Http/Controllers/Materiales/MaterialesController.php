@@ -23,6 +23,15 @@ class MaterialesController extends Controller
         return response()->json($materiales);
     }
 
+    public function indexReporte(Request $request)
+    {
+        //$entradas=Entrada::with('material')->get();
+        $materiales=Material::whereBetween('created_at', array($request->from,$request->to))
+        ->with('rubro')->get();
+
+        return response()->json($materiales);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

@@ -21,9 +21,10 @@ class VentasController extends Controller
         return response()->json($ventas);
     }
 
-    public function indexReporte()
+    public function indexReporte(Request $request)
     {
-        $ventas=Venta::with('salida')->get();
+        $ventas=Venta::whereBetween('created_at', array($request->from,$request->to))
+        ->with('salida')->get();
         
 
         foreach($ventas as $venta){
