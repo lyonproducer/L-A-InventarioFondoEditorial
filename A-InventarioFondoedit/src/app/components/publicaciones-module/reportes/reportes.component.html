@@ -8,27 +8,31 @@
       <select required class="form-control" id="tipo_reporte" name="tipo_reporte"
         #name="ngModel" [(ngModel)]="tipo_reporte" required>
         <option selected disabled>Seleccionar</option>
-        <option>Publicación</option>
-        <option>Entrada</option>
-        <option>Salida</option>
-        <option>Venta</option>
+        <option>Publicaciones disponibles</option>
+        <option>Entradas de publicaciones</option>
+        <option>Salidas de publicaciones</option>
+        <option>Ventas de publicaciones</option>
+        <option>Materiales disponibles</option>
+        <option>Entradas de materiales</option>
+        <option>Salidas de materiales</option>
       </select>
     </div>
 
     <!--
-    <label for="">Fecha inicio</label><br>
-    <input type="date" required name="inicio"
+    <label for="inicio">Fecha inicio</label><br>
+    <input type="date" required name="inicio" id="inicio"
     #name="ngModel" [(ngModel)]="inicio">
     <br>
     <br>
 
-    <label for="">Fecha fin</label><br>
-    <input type="date" required name="fin"
+    <label for="fin">Fecha fin</label><br>
+    <input type="date" required name="fin" id="fin"
     #name="ngModel" [(ngModel)]="fin">
     <br>
     <br>
     -->
-    <button class="btn btn-primary" [disabled]='!reportesForm.valid' (click)="generarPDF()">Generar</button>
+
+    <button class="btn btn-primary text-center" [disabled]='!reportesForm.valid' (click)="generarPDF()">Generar</button>
   </form>
  
 </mat-dialog-content>

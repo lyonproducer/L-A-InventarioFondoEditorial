@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Publicaciones;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Venta;
+use App\Models\Salida;
 
 class VentasController extends Controller
 {
@@ -17,6 +18,21 @@ class VentasController extends Controller
     {
         //$ventas = Venta::all();
         $ventas=Venta::with('salida')->get();
+        return response()->json($ventas);
+    }
+
+    public function indexReporte()
+    {
+        $ventas=Venta::with('salida')->get();
+        
+
+        foreach($ventas as $venta){
+
+            $salidas=Salida::where('id',$venta->salida_id)->with('publicaciones')->get();
+            //$venta['salidaPublicaciones']=$salidas;
+            $venta['cantidad']=count($salidas[0]->publicaciones);
+        }
+
         return response()->json($ventas);
     }
 

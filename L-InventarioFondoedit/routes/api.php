@@ -48,4 +48,9 @@ Route::group([
 
     Route::get('stocksReporte', 'Publicaciones\StocksController@indexReporte')->middleware('jwt.verify');
 
+    Route::get('salidasReporte', 'Publicaciones\SalidasController@indexReporte');//
+    Route::get('ventasReporte', 'Publicaciones\VentasController@indexReporte');//
+
+    Route::get('materialesEntradasReporte', 'Materiales\EntradasController@indexReporte');//
+    Route::get('materialesEntregasReporte', 'Materiales\EntregasController@indexReporte');//
 });

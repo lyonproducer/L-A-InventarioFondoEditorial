@@ -119,7 +119,7 @@
             <option selected="true" disabled="disabled">Seleccionar</option>
             <option value="Venta">Venta</option>
             <option value="Donación">Donación</option>
-            <option value="Prestamo">Prestamo</option>
+            <option value="Prestamo">Obsequio</option>
           </select>
         </div>
       </div>
@@ -129,8 +129,8 @@
       <div class="row">
         <div class="col">
           <div class="form-group">
-            <label for="bauche">Bauche</label>
-            <input [(ngModel)]="venta.bauche" type="text" name="bauche" min="1" #name="ngModel" id="bauche" placeholder="Inserte la bauche"
+            <label for="bauche">Recibo de pago</label>
+            <input [(ngModel)]="venta.bauche" type="text" name="bauche" min="1" #name="ngModel" id="bauche" placeholder="Inserte el recibo de pago"
               class="form-control">
           </div>
         </div>
@@ -138,7 +138,7 @@
         <div class="col">
           <div class="form-group">
             <label for="banco">Banco</label>
-            <input [(ngModel)]="venta.banco" type="text" name="banco" min="1" #name="ngModel" id="banco" placeholder="Inserte la banco"
+            <input [(ngModel)]="venta.banco" type="text" name="banco" min="1" #name="ngModel" id="banco" placeholder="Inserte el banco"
               class="form-control">
           </div>
         </div>
@@ -149,7 +149,7 @@
           <div class="form-group">
             <label for="monto_debito">Monto debito</label>
             <input [(ngModel)]="venta.monto_debito" type="number" name="monto_debito" #name="ngModel" id="monto_debito"
-              placeholder="Inserte la monto debito" class="form-control" min="1">
+              placeholder="Inserte el monto debito" class="form-control" min="1">
           </div>
         </div>
 

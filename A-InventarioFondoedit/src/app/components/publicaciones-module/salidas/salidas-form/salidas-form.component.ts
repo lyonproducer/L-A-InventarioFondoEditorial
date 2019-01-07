@@ -47,7 +47,7 @@ export class SalidasFormComponent implements OnInit {
     bauche:null, 
     banco:null, 
     monto_debito:null,
-    monto_credito:null
+    monto_credito:0
   }
 
   titulos:any=[];

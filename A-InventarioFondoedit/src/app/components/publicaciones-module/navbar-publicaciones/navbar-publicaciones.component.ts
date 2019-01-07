@@ -17,15 +17,4 @@ export class NavbarPublicacionesComponent implements OnInit {
   }
 
 
-  openReporte(){
-
-    const dialogRef = this.dialog.open(ReportesComponent, {
-      width: '30%',
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The Material dialog was closed');
-    });
-  }
-
 }
