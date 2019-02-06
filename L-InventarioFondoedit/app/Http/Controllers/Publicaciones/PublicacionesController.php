@@ -20,6 +20,13 @@ class PublicacionesController extends Controller
         return response()->json($publicaciones);
     }
 
+    public function indexReporte(Request $request)
+    {
+        $publicaciones=Publicacion::whereBetween('created_at', array($request->from,$request->to))
+        ->with('stocks')->get();
+        return response()->json($publicaciones);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

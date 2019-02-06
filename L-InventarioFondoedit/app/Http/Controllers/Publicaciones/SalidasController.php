@@ -22,6 +22,18 @@ class SalidasController extends Controller
         return response()->json($salidas);
     }
 
+    public function indexReporte(Request $request)
+    {
+        $salidas=Salida::whereBetween('created_at', array($request->from,$request->to))
+        ->with('publicaciones')->get();
+
+        foreach($salidas as $salida){
+            $salida['cantidad']=count($salida->publicaciones);
+        }
+
+        return response()->json($salidas);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

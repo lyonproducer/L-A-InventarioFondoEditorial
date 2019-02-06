@@ -23,8 +23,8 @@ export class PublicacionesFormComponent implements OnInit {
     origen:null,
     tipo_publicacion:'Seleccionar',
     categoria:null,
-    cantidad_impresa:null,
-    cantidad_cd:null,
+    cantidad_impresa:0,
+    cantidad_cd:0,
     url_digital:null,
     isbn:null,
     costo_unitario:null,
@@ -69,11 +69,6 @@ export class PublicacionesFormComponent implements OnInit {
     console.log('form',form.value);
     console.log('this publicacion', this.publicacion);
 
-    if(!this.publicacion.cantidad_impresa && !this.publicacion.cantidad_cd){
-      this.snotify.error('Es necesario ingresar una cantidad disponible', {timeout:0});
-      return
-    }
-
     if(this.revista){
       if(!this.publicacion.numero_edicion || !this.publicacion.periodo || !this.publicacion.volumen){
         this.snotify.error('Es necesario ingresar toda la informacion de la revista', {timeout:0});
@@ -81,15 +76,8 @@ export class PublicacionesFormComponent implements OnInit {
       }
     }
 
-    if(!this.publicacion.cantidad_impresa){
-      this.publicacion.cantidad_impresa = 0;
-    }
-
-    if(!this.publicacion.cantidad_cd){
-      this.publicacion.cantidad_cd = 0;
-    }
-
     this.loading = true;
+
     this.publicacionesService.postPublicacion(this.publicacion).subscribe(
       data =>{
         console.log(data);
@@ -107,6 +95,7 @@ export class PublicacionesFormComponent implements OnInit {
 
   manageResponse(data){
     this.snotify.success(data.info);
+    this.snotify.info('Puedes proceder a añadir stock en la opcion entradas');
   }
 
   updatePublicacionesList(){

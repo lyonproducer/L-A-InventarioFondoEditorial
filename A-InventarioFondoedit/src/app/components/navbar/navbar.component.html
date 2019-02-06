@@ -8,6 +8,8 @@
       <div class="navbar-nav">
         <a class="nav-item nav-link" routerLink="materialesModule" *ngIf="loggedIn">Materiales</a>
         <a class="nav-item nav-link" routerLink="publicacionesModule/publicaciones" *ngIf="loggedIn">Publicaciones</a>
+        <a class="nav-item nav-link" style="cursor:pointer;" 
+        (click)="openReporte()">Reportes</a>
       </div>
 
       <ul class="navbar-nav ml-auto">

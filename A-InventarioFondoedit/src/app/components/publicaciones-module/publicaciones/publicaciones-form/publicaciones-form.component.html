@@ -116,8 +116,20 @@
       <div class="col-4">
         <div class="form-group">
           <label for="categoria">Categoría</label>
-          <input required [(ngModel)]="publicacion.categoria" type="text" name="categoria" #name="ngModel" id="categoria"
+          <select class="form-control"  required [(ngModel)]="publicacion.categoria"
+          name="categoria" #name="ngModel" id="categoria">
+            <option selected disabled>Selecionar categoria</option>
+            <option>Revistas Cientificas</option>
+            <option>Publicaciones Institucionales</option>
+            <option>Ciencia, Hombre y Ambiente</option>
+            <option>Gerencia</option>
+            <option>Educación, Humanidades y Arte</option>
+            <option>Cultura y Extensión</option>
+          </select>
+          <!--
+          <input type="text" name="categoria" #name="ngModel" id="categoria"
             placeholder="Inserte el categoria" class="form-control">
+          -->
         </div>
       </div>
     </div>
@@ -126,7 +138,8 @@
     <hr>
 
     <div class="row">
-
+      
+      <!--
       <div class="col">
         <div class="form-group">
           <label for="cantidad_cd">Cantidad en disco</label>
@@ -142,7 +155,7 @@
             placeholder="Inserte la Cantidad impresa" class="form-control" min="1">
         </div>
       </div>
-
+      -->
       <div class="col">
         <div class="form-group">
           <label for="url_digital">Url Digital</label>

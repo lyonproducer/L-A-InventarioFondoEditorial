@@ -16,6 +16,10 @@ export class PublicacionesService {
     return this.http.get(this.variables.baseApi + '/publicaciones');
   }
 
+  getPublicacionesReporte(data){
+    return this.http.post(this.variables.baseApi + '/publicacionesReporte',data);
+  }
+
   postPublicacion(data){
     return this.http.post(this.variables.baseApi + '/publicaciones',data);
   }

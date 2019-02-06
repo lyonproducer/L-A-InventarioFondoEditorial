@@ -19,7 +19,23 @@ class EntradasController extends Controller
     {
         //$materiales=Material::with('rubro:id,nombre')->get();
         //$entradas=Entrada::All();
-        $entradas=Entrada::with('material:id,nombre')->get();
+        $entradas=Entrada::with('material')->get();
+        return response()->json($entradas);
+    }
+
+    public function indexReporte(Request $request)
+    {
+        //$entradas=Entrada::with('material')->get();
+
+        $entradas=Entrada::whereBetween('created_at', array($request->from,$request->to))
+                        ->with('material')
+                        ->get();
+
+        foreach($entradas as $entrada){
+            $entrada['nombre']=$entrada->material->nombre;
+            $entrada['codigo']=$entrada->material->codigo;
+        }
+
         return response()->json($entradas);
     }
 

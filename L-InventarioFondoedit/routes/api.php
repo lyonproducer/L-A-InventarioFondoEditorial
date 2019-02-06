@@ -45,7 +45,13 @@ Route::group([
     Route::resource('salidas',   'Publicaciones\SalidasController')->middleware('jwt.verify');
     Route::resource('ventas',   'Publicaciones\VentasController')->middleware('jwt.verify');
 
+    //Reportes
+    Route::post('publicacionesReporte', 'Publicaciones\PublicacionesController@indexReporte');//
+    Route::post('stocksReporte', 'Publicaciones\StocksController@indexReporte')->middleware('jwt.verify');
+    Route::post('salidasReporte', 'Publicaciones\SalidasController@indexReporte');//
+    Route::post('ventasReporte', 'Publicaciones\VentasController@indexReporte');//
 
-    Route::get('stocksReporte', 'Publicaciones\StocksController@indexReporte')->middleware('jwt.verify');
-
+    Route::post('materialesReporte', 'Materiales\MaterialesController@indexReporte');//
+    Route::post('materialesEntradasReporte', 'Materiales\EntradasController@indexReporte');//
+    Route::post('materialesEntregasReporte', 'Materiales\EntregasController@indexReporte');//
 });

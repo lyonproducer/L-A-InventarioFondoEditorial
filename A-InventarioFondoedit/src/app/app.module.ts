@@ -10,7 +10,11 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {MatTooltipModule} from '@angular/material/tooltip';
+<<<<<<< HEAD
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+=======
+import 'hammerjs';
+>>>>>>> f2de7978f418ad778f38c91ddbfc9b163e2af579
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';

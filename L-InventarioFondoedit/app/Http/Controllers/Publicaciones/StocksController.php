@@ -21,10 +21,11 @@ class StocksController extends Controller
         return response()->json($stocks);
     }
 
-    public function indexReporte()
+    public function indexReporte(Request $request)
     {
         //$stocks = Stock::All();
-        $stocks=Stock::with('publicacion')->get();
+        $stocks=Stock::whereBetween('created_at', array($request->from,$request->to))
+        ->with('publicacion')->get();
 
         foreach($stocks as $stock){
             $stock['titulo']=$stock->publicacion->titulo; 

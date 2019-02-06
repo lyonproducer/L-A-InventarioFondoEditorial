@@ -16,6 +16,10 @@ export class VentasService {
     return this.http.get(this.variables.baseApi + '/ventas');
   }
 
+  getVentasReporte(data){
+    return this.http.post(this.variables.baseApi + '/ventasReporte',data);
+  }
+
   postVenta(data){
     return this.http.post(this.variables.baseApi + '/ventas',data);
   }
