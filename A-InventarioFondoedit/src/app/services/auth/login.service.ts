@@ -20,7 +20,7 @@ export class LoginService {
   }
 
   public sendPaswordReset(data){
-    return this.http.post(this.variables.baseApi + '/api/sendPasswordResetLink',data);
+    return this.http.post(this.variables.baseApi + '/sendPasswordResetLink',data);
   }
 
   public changePassword(data){

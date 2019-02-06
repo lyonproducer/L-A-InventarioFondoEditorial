@@ -17,6 +17,9 @@ export class LoginComponent implements OnInit {
     password:null
   };
 
+
+  public loading:boolean = false;
+
   public error:any = null;
 
   constructor(private loginService:LoginService,
@@ -29,6 +32,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(){
+    this.loading=true;
     this.loginService.login(this.form).subscribe(
       data => this.handleResponse(data),
       error => this.handleError(error)
@@ -36,6 +40,7 @@ export class LoginComponent implements OnInit {
   }
 
   handleResponse(data){
+    this.loading=false;
     this.token.handle(data.access_token);
     this.auth.changeAuthStatus(true);
     this.handleUser(data.user);
@@ -43,12 +48,11 @@ export class LoginComponent implements OnInit {
   }
 
   handleError(error){
+    this.loading=false;
     this.error = error.error.error;
-
   }
 
   handleUser(user){
-
     let data:any = JSON.stringify(user);
     localStorage.setItem('userFondoedit',data);
   }

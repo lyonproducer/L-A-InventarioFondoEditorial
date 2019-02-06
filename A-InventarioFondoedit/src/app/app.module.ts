@@ -10,6 +10,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -42,6 +43,7 @@ import { SalidasFormComponent } from './components/publicaciones-module/salidas/
 import { TokenInterceptor } from './security/token.interceptor';
 import { HomeComponent } from './components/home/home.component';
 import { ReportesComponent } from './components/publicaciones-module/reportes/reportes.component';
+import { UserService } from './services/admin/user.service';
 
 const routes: Route[] = [
   
@@ -120,7 +122,8 @@ const routes: Route[] = [
     MatDialogModule,
     MatProgressBarModule,
     NgxPaginationModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatProgressSpinnerModule
   ],
   providers: [
     { provide: 'SnotifyToastConfig', useValue: ToastDefaults},

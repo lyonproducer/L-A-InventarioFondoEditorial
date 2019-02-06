@@ -8,8 +8,12 @@
           <div class="card-header">
             <div class="h3">Registrarse</div>
           </div>
+
+          <div class="card-body d-flex justify-content-center" *ngIf="loading">
+            <mat-progress-spinner class="text-center" mode="indeterminate"></mat-progress-spinner>
+          </div>
     
-          <div class="card-body">
+          <div class="card-body"  *ngIf="!loading">
             <form #signupForm=ngForm (ngSubmit)="onSubmit()" >
 
               <div class="form-group">
